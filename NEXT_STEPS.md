@@ -21,6 +21,7 @@ npm install
 ```
 
 This will install:
+
 - Playwright browsers
 - All Node.js dependencies
 - @types/node for TypeScript
@@ -86,14 +87,14 @@ This will show you what a student would see when validating their work.
 
 ## 📚 Key Documentation
 
-| Document | Purpose |
-|----------|---------|
-| `README.md` | Project overview & quick start |
-| `FULL_STACK_SETUP.md` | Complete technical documentation |
-| `IMPLEMENTATION_COMPLETE.md` | What was built & why |
-| `QUICK_REFERENCE.md` | Daily command reference |
-| `CONTRIBUTING.md` | Contribution guidelines |
-| `SETUP_SUMMARY.md` | Original setup details |
+| Document                     | Purpose                          |
+| ---------------------------- | -------------------------------- |
+| `README.md`                  | Project overview & quick start   |
+| `FULL_STACK_SETUP.md`        | Complete technical documentation |
+| `IMPLEMENTATION_COMPLETE.md` | What was built & why             |
+| `QUICK_REFERENCE.md`         | Daily command reference          |
+| `CONTRIBUTING.md`            | Contribution guidelines          |
+| `SETUP_SUMMARY.md`           | Original setup details           |
 
 ## 🎯 Creating More Teacher Packs
 

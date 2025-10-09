@@ -46,14 +46,14 @@ Sprint 1 (25 min) → Break (5 min) → Sprint 2 (25 min)
 
 ## 🧠 Learning Principles
 
-| Principle            | Implementation                              |
-| -------------------- | ------------------------------------------- |
-| **Chunking**         | 50-min sessions, small objectives           |
-| **Active Recall**    | Pre-session quiz, "What I Learned" in PRs   |
-| **Interleaving**     | Rotate TS → Python → SQL weekly             |
-| **Spaced Repetition** | 24h & 7d reviews (Sunday)                   |
+| Principle               | Implementation                            |
+| ----------------------- | ----------------------------------------- |
+| **Chunking**            | 50-min sessions, small objectives         |
+| **Active Recall**       | Pre-session quiz, "What I Learned" in PRs |
+| **Interleaving**        | Rotate TS → Python → SQL weekly           |
+| **Spaced Repetition**   | 24h & 7d reviews (Sunday)                 |
 | **Deliberate Practice** | Tests fail initially (TDD)                |
-| **Immediate Feedback** | CI + local checks                          |
+| **Immediate Feedback**  | CI + local checks                         |
 
 ## 🔄 Student Workflow
 

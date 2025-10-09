@@ -1,0 +1,6 @@
+- Activate `@teacher-mode`.
+- Run `@create-teacher-pack` with Phase/Session (e.g., **A1S1**).
+- Execute the generated `scripts/check-*.sh` to see failing tests.
+- Attempt TODOs (no hints) → run tests → consult `@stuck-protocol` only if needed.
+- Open PR → activate `@strict-reviewer` for rubric grading.
+- Log 3 bullets “What I learned” → ask for spaced-review flashcards.

@@ -1,0 +1,18 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "files.eol": "\n",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+  "ruff.enable": true,
+  "testing.automaticallyOpenPeekView": "failure",
+  "playwright.env": { "CI": "false" }
+}

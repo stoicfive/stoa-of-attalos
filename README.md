@@ -172,8 +172,8 @@ open teacher/a1s1/README.md
 
 ## 📚 Documentation
 
-- **[LEARNING_SYSTEM_OVERVIEW.md](LEARNING_SYSTEM_OVERVIEW.md)** - System breakdown
-- **[FULL_STACK_SETUP.md](FULL_STACK_SETUP.md)** - Complete technical docs
-- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Command reference
-- **[NEXT_STEPS.md](NEXT_STEPS.md)** - Getting started guide
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
+- **[LEARNING_SYSTEM_OVERVIEW.md](docs/LEARNING_SYSTEM_OVERVIEW.md)** - System breakdown
+- **[FULL_STACK_SETUP.md](docs/FULL_STACK_SETUP.md)** - Complete technical docs
+- **[QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** - Command reference
+- **[NEXT_STEPS.md](docs/NEXT_STEPS.md)** - Getting started guide
+- **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Contribution guidelines

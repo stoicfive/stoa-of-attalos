@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:1-20.18-bookworm
+FROM mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm
 
 # Lock versions for reproducibility
 ENV NODE_VERSION=20.18.1 \

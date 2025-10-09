@@ -1,0 +1,16 @@
+symbol,entry_price,exit_price,shares,trade_date,timezone,notes,fees,split_adjusted
+AAPL,150.00,155.00,100,2024-01-15T09:30:00,America/New_York,Breakout above resistance,6.95,false
+MSFT,380.00,375.00,50,2024-01-16T10:00:00,America/New_York,Failed support test,6.95,false
+GOOGL,140.00,145.00,75,2024-01-17T11:30:00,America/New_York,Earnings momentum,6.95,false
+TSLA,200.00,210.00,25,2024-01-18T14:00:00,America/New_York,Gap and go strategy,6.95,false
+NVDA,500.00,490.00,20,2024-01-19T09:45:00,America/New_York,Profit taking at resistance,6.95,false
+AMD,120.00,125.00,80,2024-01-22T10:15:00,America/New_York,Sector rotation play,6.95,false
+META,350.00,345.00,30,2024-01-23T13:30:00,America/New_York,Stop loss triggered,6.95,false
+AMZN,155.00,160.00,60,2024-01-24T09:00:00,America/New_York,Earnings beat,6.95,false
+NFLX,480.00,475.00,15,2024-01-25T11:00:00,America/New_York,Reversal at support,6.95,false
+SPY,450.00,455.00,40,2024-01-26T14:30:00,America/New_York,Market trend following,6.95,false
+QQQ,380.00,385.00,35,2024-01-29T10:30:00,America/New_York,Tech sector strength,6.95,false
+IWM,195.00,192.00,50,2024-01-30T12:00:00,America/New_York,Small cap weakness,6.95,false
+DIA,370.00,375.00,25,2024-01-31T09:30:00,America/New_York,Blue chip rally,6.95,false
+TSLA,205.00,200.00,30,2024-02-01T13:00:00,America/New_York,Overbought correction,6.95,false
+AAPL,152.00,158.00,90,2024-02-02T10:00:00,America/New_York,Product launch hype,6.95,false

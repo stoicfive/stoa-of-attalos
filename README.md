@@ -177,3 +177,6 @@ open teacher/a1s1/README.md
 - **[QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** - Command reference
 - **[NEXT_STEPS.md](docs/NEXT_STEPS.md)** - Getting started guide
 - **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Contribution guidelines
+- **[GLOSSARY.md](docs/GLOSSARY.md)** - 80+ terms with metaphors
+- **[UPGRADES_APPLIED.md](docs/UPGRADES_APPLIED.md)** - Latest enhancements
+- **[LEARNING_DEBT.md](docs/LEARNING_DEBT.md)** - Knowledge gap tracking

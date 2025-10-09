@@ -1,0 +1,104 @@
+name: PR Size Guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-pr-size:
+    name: Check PR Size
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get PR diff stats
+        id: diff
+        run: |
+          # Get the base and head commits
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.event.pull_request.head.sha }}
+          
+          # Calculate lines changed
+          LINES_CHANGED=$(git diff --shortstat $BASE_SHA $HEAD_SHA | awk '{print $4 + $6}')
+          echo "lines_changed=$LINES_CHANGED" >> $GITHUB_OUTPUT
+          
+          # Count files changed
+          FILES_CHANGED=$(git diff --name-only $BASE_SHA $HEAD_SHA | wc -l)
+          echo "files_changed=$FILES_CHANGED" >> $GITHUB_OUTPUT
+
+      - name: Check if teacher pack
+        id: check_label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels.map(l => l.name);
+            const isTeacherPack = labels.includes('teacher-pack');
+            const isLesson = labels.some(l => l.startsWith('lesson:'));
+            core.setOutput('is_exempt', isTeacherPack || isLesson);
+
+      - name: Comment on large PR
+        if: steps.diff.outputs.lines_changed > 500 && steps.check_label.outputs.is_exempt == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const linesChanged = ${{ steps.diff.outputs.lines_changed }};
+            const filesChanged = ${{ steps.diff.outputs.files_changed }};
+            
+            const comment = `## ⚠️ Large PR Warning
+            
+            This PR changes **${linesChanged} lines** across **${filesChanged} files**.
+            
+            ### Why this matters:
+            - Large PRs are harder to review thoroughly
+            - Increased risk of bugs slipping through
+            - Longer review cycles
+            - More difficult to revert if needed
+            
+            ### Recommendations:
+            1. **Split into smaller PRs** - Aim for < 500 lines per PR
+            2. **Add the \`teacher-pack\` label** if this is a new learning session
+            3. **Add a \`lesson:*\` label** if this is lesson-related work
+            
+            ### If this is intentional:
+            - Add the \`teacher-pack\` label to bypass this check
+            - Ensure comprehensive testing is in place
+            - Add detailed PR description explaining the scope
+            
+            ---
+            *This is an automated check to maintain code quality. You can still merge this PR.*`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Add size label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const linesChanged = ${{ steps.diff.outputs.lines_changed }};
+            let sizeLabel = 'size/XS';
+            
+            if (linesChanged > 1000) {
+              sizeLabel = 'size/XXL';
+            } else if (linesChanged > 500) {
+              sizeLabel = 'size/XL';
+            } else if (linesChanged > 250) {
+              sizeLabel = 'size/L';
+            } else if (linesChanged > 100) {
+              sizeLabel = 'size/M';
+            } else if (linesChanged > 50) {
+              sizeLabel = 'size/S';
+            }
+            
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: [sizeLabel]
+            });

@@ -1,0 +1,179 @@
+{
+  "version": "1.0.0",
+  "course": "Trading Journal SaaS - Full Stack Development",
+  "phases": [
+    {
+      "id": "A",
+      "name": "Foundation",
+      "description": "Core data models, validation, and basic UI components",
+      "sessions": [
+        {
+          "id": "a1s1",
+          "title": "Project Setup & First Entry",
+          "duration": 50,
+          "language": "TypeScript",
+          "objectives": [
+            "Set up Next.js project with TypeScript",
+            "Create Trade data model",
+            "Implement validation functions",
+            "Write unit tests (70% coverage)",
+            "Build trade entry form"
+          ],
+          "prerequisites": ["Node.js 20+", "Basic TypeScript", "React fundamentals"],
+          "deliverables": [
+            "packages/types/src/trade.ts",
+            "packages/types/src/validators.ts",
+            "packages/types/src/__tests__/validators.test.ts"
+          ],
+          "testCommand": "./scripts/check-a1s1.sh",
+          "hintsPath": "teacher/a1s1/hints.md",
+          "rubricPath": "teacher/a1s1/rubric.md",
+          "solutionsPath": "teacher/a1s1/solutions/",
+          "status": "complete",
+          "tags": ["typescript", "validation", "tdd", "react"]
+        },
+        {
+          "id": "a1s2",
+          "title": "Database Models with SQLAlchemy",
+          "duration": 50,
+          "language": "Python",
+          "objectives": [
+            "Define Trade model with SQLAlchemy",
+            "Create database migrations with Alembic",
+            "Write model tests",
+            "Implement CRUD operations"
+          ],
+          "prerequisites": ["Python 3.12", "SQL basics", "A1S1 complete"],
+          "deliverables": [
+            "apps/api/models/trade.py",
+            "apps/api/tests/test_trade_model.py",
+            "alembic/versions/*.py"
+          ],
+          "testCommand": "./scripts/check-a1s2.sh",
+          "status": "planned",
+          "tags": ["python", "sqlalchemy", "database", "migrations"]
+        },
+        {
+          "id": "a1s3",
+          "title": "FastAPI Endpoints",
+          "duration": 50,
+          "language": "Python",
+          "objectives": [
+            "Create REST API endpoints",
+            "Implement request validation",
+            "Add error handling",
+            "Write API tests"
+          ],
+          "prerequisites": ["A1S2 complete", "HTTP basics"],
+          "deliverables": [
+            "apps/api/routers/trades.py",
+            "apps/api/tests/test_trades_api.py"
+          ],
+          "testCommand": "./scripts/check-a1s3.sh",
+          "status": "planned",
+          "tags": ["python", "fastapi", "rest-api", "testing"]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Integration",
+      "description": "Connect frontend to backend, add authentication",
+      "sessions": [
+        {
+          "id": "b1s1",
+          "title": "API Integration & State Management",
+          "duration": 50,
+          "language": "TypeScript",
+          "objectives": [
+            "Connect React to FastAPI",
+            "Implement API client",
+            "Add loading states",
+            "Handle errors gracefully"
+          ],
+          "prerequisites": ["A1S3 complete", "Async JavaScript"],
+          "status": "planned",
+          "tags": ["typescript", "react", "api-integration", "state-management"]
+        },
+        {
+          "id": "b1s2",
+          "title": "Authentication with JWT",
+          "duration": 50,
+          "language": "Python",
+          "objectives": [
+            "Implement JWT authentication",
+            "Add user registration/login",
+            "Protect API routes",
+            "Store tokens securely"
+          ],
+          "prerequisites": ["B1S1 complete", "Security basics"],
+          "status": "planned",
+          "tags": ["python", "authentication", "jwt", "security"]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Advanced Features",
+      "description": "Analytics, payments, deployment",
+      "sessions": [
+        {
+          "id": "c1s1",
+          "title": "Trade Analytics & Charts",
+          "duration": 50,
+          "language": "TypeScript",
+          "objectives": [
+            "Calculate P&L metrics",
+            "Build equity curve",
+            "Create interactive charts",
+            "Add filtering/sorting"
+          ],
+          "prerequisites": ["B1S2 complete"],
+          "status": "planned",
+          "tags": ["typescript", "analytics", "charts", "data-visualization"]
+        },
+        {
+          "id": "c1s2",
+          "title": "Stripe Payment Integration",
+          "duration": 50,
+          "language": "TypeScript",
+          "objectives": [
+            "Integrate Stripe API",
+            "Implement subscription tiers",
+            "Handle webhooks",
+            "Test payment flows"
+          ],
+          "prerequisites": ["C1S1 complete"],
+          "status": "planned",
+          "tags": ["typescript", "payments", "stripe", "webhooks"]
+        }
+      ]
+    }
+  ],
+  "learningPrinciples": {
+    "chunking": "50-minute sessions with focused objectives",
+    "activeRecall": "Pre-session quizzes and 'What I Learned' reflections",
+    "interleaving": "Rotate TypeScript → Python → SQL weekly",
+    "spacedRepetition": "24-hour and 7-day review checkpoints",
+    "deliberatePractice": "TDD approach with failing tests",
+    "immediateFeedback": "CI checks and local validation scripts"
+  },
+  "testPyramid": {
+    "unit": 70,
+    "integration": 25,
+    "e2e": 5
+  },
+  "qualityStandards": {
+    "maxLinesPerFile": 300,
+    "maxLinesPerFunction": 50,
+    "minTestCoverage": 70,
+    "strictTypeChecking": true
+  },
+  "progressTracking": {
+    "completedSessions": ["a1s1"],
+    "currentSession": null,
+    "nextSession": "a1s2",
+    "totalSessions": 8,
+    "completionPercentage": 12.5
+  }
+}

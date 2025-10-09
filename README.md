@@ -172,11 +172,20 @@ open teacher/a1s1/README.md
 
 ## 📚 Documentation
 
-- **[LEARNING_SYSTEM_OVERVIEW.md](docs/LEARNING_SYSTEM_OVERVIEW.md)** - System breakdown
-- **[FULL_STACK_SETUP.md](docs/FULL_STACK_SETUP.md)** - Complete technical docs
-- **[QUICK_REFERENCE.md](docs/QUICK_REFERENCE.md)** - Command reference
-- **[NEXT_STEPS.md](docs/NEXT_STEPS.md)** - Getting started guide
-- **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Contribution guidelines
+**Start Here:**
+- **[WELCOME.md](docs/WELCOME.md)** - 🎓 Orientation & first steps
+- **[CURRICULUM.md](docs/CURRICULUM.md)** - 📚 Complete course overview
+- **[PHASE_A.md](docs/PHASE_A.md)** - Foundation (Sessions 1-3)
+- **[PHASE_B.md](docs/PHASE_B.md)** - Integration (Sessions 4-5)
+- **[PHASE_C.md](docs/PHASE_C.md)** - Advanced (Sessions 6-8)
+
+**Reference:**
 - **[GLOSSARY.md](docs/GLOSSARY.md)** - 80+ terms with metaphors
-- **[UPGRADES_APPLIED.md](docs/UPGRADES_APPLIED.md)** - Latest enhancements
+- **[QUICK_START_V2.md](docs/QUICK_START_V2.md)** - 10-minute setup guide
 - **[LEARNING_DEBT.md](docs/LEARNING_DEBT.md)** - Knowledge gap tracking
+
+**Technical:**
+- **[LEARNING_SYSTEM_OVERVIEW.md](docs/LEARNING_SYSTEM_OVERVIEW.md)** - System architecture
+- **[FULL_STACK_SETUP.md](docs/FULL_STACK_SETUP.md)** - Complete technical docs
+- **[UPGRADES_APPLIED.md](docs/UPGRADES_APPLIED.md)** - Latest enhancements
+- **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Contribution guidelines

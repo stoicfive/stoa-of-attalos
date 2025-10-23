@@ -8,11 +8,13 @@ A complete development environment with automated quality checks, progressive le
 
 **Watch the intro video** to see what you'll build in 8 sessions:
 
-[![Meet Nova - Your AI Professor](https://img.youtube.com/vi/op6XMqsVWnk/maxresdefault.jpg)](https://youtu.be/op6XMqsVWnk)
+<a href="https://youtu.be/op6XMqsVWnk" target="_blank">
+  <img src="https://img.youtube.com/vi/op6XMqsVWnk/maxresdefault.jpg" alt="Meet Nova - Your AI Professor" />
+</a>
 
 > ⏱️ **Duration:** ~1 minute  
 > 📚 **Topics:** Course structure, tech stack, learning approach  
-> 🔗 **Watch on YouTube:** [youtu.be/op6XMqsVWnk](https://youtu.be/op6XMqsVWnk)
+> 🔗 **Watch on YouTube:** <a href="https://youtu.be/op6XMqsVWnk" target="_blank">youtu.be/op6XMqsVWnk</a>
 
 ## ✨ Features
 

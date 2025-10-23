@@ -135,6 +135,26 @@
       opacity: 1;
     }
   }
+
+  @keyframes zoom-out {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 }
 
 /* ============================================
@@ -197,6 +217,14 @@
 
   .zoom-in-95 {
     animation: zoom-in 0.3s ease-out;
+  }
+
+  .zoom-out-95 {
+    animation: zoom-out 0.3s ease-in;
+  }
+
+  .fade-out {
+    animation: fade-out 0.3s ease-in;
   }
 
   /* Combined animation classes */

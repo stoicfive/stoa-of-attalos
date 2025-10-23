@@ -42,6 +42,9 @@ export default function SessionA1S1Activity() {
 
   // Track if user has dismissed the completion modal
   const [sessionCompleted, setSessionCompleted] = useState(false);
+  
+  // Track modal closing animation
+  const [isClosing, setIsClosing] = useState(false);
 
   // Load state from localStorage on mount (client-side only)
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +91,12 @@ export default function SessionA1S1Activity() {
   const showCompletionModal = allComplete && !sessionCompleted;
 
   const handleCloseModal = () => {
-    setSessionCompleted(true);
+    setIsClosing(true);
+    // Wait for animation to complete before actually closing
+    setTimeout(() => {
+      setSessionCompleted(true);
+      setIsClosing(false);
+    }, 300); // Match animation duration
   };
 
   // Save state to localStorage whenever it changes
@@ -764,7 +772,7 @@ export default function SessionA1S1Activity() {
       {/* Completion Modal */}
       {showCompletionModal && (
         <div 
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ${isClosing ? 'fade-out' : ''}`}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
@@ -776,7 +784,7 @@ export default function SessionA1S1Activity() {
         >
           <Card 
             ref={modalRef}
-            className="max-w-md w-full border-green-500 zoom-in-95"
+            className={`max-w-md w-full border-green-500 ${isClosing ? 'zoom-out-95' : 'zoom-in-95'}`}
           >
             <CardContent className="pt-6">
               <div className="text-center py-8">

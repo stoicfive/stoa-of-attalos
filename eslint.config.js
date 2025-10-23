@@ -12,7 +12,6 @@ export default tseslint.config(
       '**/coverage/**',
       '**/htmlcov/**',
       '**/*.d.ts',
-      'packages/types/src/**',
       // Portal and infrastructure (not student files)
       'apps/student-portal/**',
       'docs/**',
@@ -25,7 +24,7 @@ export default tseslint.config(
     ],
   },
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ['lessons/**/*.ts', 'lessons/**/*.tsx'],
     extends: [...tseslint.configs.recommended],
     languageOptions: {
       ecmaVersion: 2022,

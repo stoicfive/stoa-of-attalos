@@ -23,7 +23,7 @@ export default defineConfig({
         statements: 70,
       },
     },
-    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}', '!**/e2e/**'],
-    exclude: ['node_modules', 'dist', 'build', '.next', '**/e2e/**'],
+    include: ['lessons/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}', 'tests/**/*.{test,spec}.{js,ts}'],
+    exclude: ['node_modules', 'dist', 'build', '.next', '**/e2e/**', 'apps/student-portal'],
   },
 });

@@ -25,6 +25,13 @@ A complete development environment with automated quality checks, progressive le
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+- **Node.js** 20+ and npm 10+
+- **Python** 3.12+ 
+- **Docker Desktop** (for database)
+- **Git** for version control
+
 ### Option 1: Dev Container (Recommended)
 
 **Zero configuration, instant consistency:**
@@ -39,15 +46,77 @@ See [`.devcontainer/README.md`](.devcontainer/README.md) for details.
 
 ### Option 2: Local Setup
 
+**1. Clone the repository**
 ```bash
-# Install dependencies
-npm install
+git clone https://github.com/stoicfive/stoa-of-attalos.git
+cd stoa-of-attalos
+```
 
-# Verify setup
+**2. Install Node.js dependencies**
+```bash
+npm install
+```
+
+**3. Install Python dependencies**
+```bash
+# Install Poetry (if not already installed)
+pip3 install poetry
+
+# Install Python packages
+poetry install
+```
+
+**4. Set up the database**
+```bash
+# Start PostgreSQL with Docker Compose
+docker-compose -f .devcontainer/docker-compose.yml up -d
+
+# Verify database is running
+docker-compose -f .devcontainer/docker-compose.yml ps
+```
+
+**5. Configure environment variables**
+```bash
+# Copy example environment file
+cp .env.example .env
+
+# Edit .env with your settings (optional for local dev)
+```
+
+**6. Verify setup**
+```bash
+# Run all checks
 npm run check:all
 
-# Start learning with A1S1
+# Run tests in watch mode
+npm run test:watch
+```
+
+**7. Start learning!**
+```bash
+# Open first session
 open teacher/a1s1/README.md
+
+# Or view in terminal
+cat teacher/a1s1/README.md
+```
+
+### Quick Commands
+
+```bash
+# Development
+npm run test:watch          # Watch tests (recommended during coding)
+npm run check:all           # Run all quality checks
+npm run db:adminer          # Open database UI (http://localhost:8080)
+
+# Python
+poetry run pytest           # Run Python tests
+poetry run ruff check .     # Lint Python code
+
+# Database
+docker-compose -f .devcontainer/docker-compose.yml up -d    # Start
+docker-compose -f .devcontainer/docker-compose.yml down     # Stop
+docker-compose -f .devcontainer/docker-compose.yml ps       # Status
 ```
 
 ## 📁 Project Structure

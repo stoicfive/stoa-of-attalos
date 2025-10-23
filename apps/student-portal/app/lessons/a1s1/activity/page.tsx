@@ -96,6 +96,8 @@ export default function SessionA1S1Activity() {
     setTimeout(() => {
       setSessionCompleted(true);
       setIsClosing(false);
+      // Scroll to top smoothly after modal closes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 300); // Match animation duration
   };
 

@@ -50,7 +50,10 @@
             "alembic/versions/*.py"
           ],
           "testCommand": "./scripts/check-a1s2.sh",
-          "status": "planned",
+          "hintsPath": "teacher/a1s2/hints.md",
+          "rubricPath": "teacher/a1s2/rubric.md",
+          "solutionsPath": "teacher/a1s2/solutions/",
+          "status": "complete",
           "tags": ["python", "sqlalchemy", "database", "migrations"]
         },
         {
@@ -170,10 +173,10 @@
     "strictTypeChecking": true
   },
   "progressTracking": {
-    "completedSessions": ["a1s1"],
+    "completedSessions": ["a1s1", "a1s2"],
     "currentSession": null,
-    "nextSession": "a1s2",
+    "nextSession": "a1s3",
     "totalSessions": 8,
-    "completionPercentage": 12.5
+    "completionPercentage": 25.0
   }
 }

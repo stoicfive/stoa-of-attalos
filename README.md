@@ -12,8 +12,6 @@ A complete development environment with automated quality checks, progressive le
 > ⏱️ **Duration:** ~1 minute  
 > 📚 **Topics:** Course structure, tech stack, learning approach
 
-*Note: Video file is 37MB. For best experience, we recommend uploading to YouTube and linking here.*
-
 ## ✨ Features
 
 - 🐳 **Dev Container** - Node.js 20, Python 3.12, PostgreSQL 16 (zero setup)

@@ -36,6 +36,8 @@ export function useSessionState(sessionId: string, taskIds: string[]) {
     } catch (error) {
       console.error('Failed to load session state:', error);
     }
+    // STORAGE_KEY is constant, no need to include in deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Save state to localStorage whenever it changes

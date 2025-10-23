@@ -47,7 +47,6 @@ export default function SessionA1S1Activity() {
   const [isClosing, setIsClosing] = useState(false);
 
   // Load state from localStorage on mount (client-side only)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);

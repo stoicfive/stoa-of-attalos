@@ -45,7 +45,10 @@ A simple trade entry form that captures:
    - `validateShares(shares: number): boolean`
    - `validateTrade(trade: Trade): ValidationResult`
 
-3. **Write unit tests** (`packages/types/src/__tests__/validators.test.ts`)
+3. **Complete unit tests** (`packages/types/src/__tests__/validators.test.ts`)
+   - Test file already exists with TODO(student) markers
+   - Find test functions with `pass` statements
+   - Replace `pass` with actual test implementations
    - Test each validation function
    - Test edge cases (empty strings, negative numbers, etc.)
    - Aim for 100% coverage on validation logic
@@ -57,7 +60,10 @@ A simple trade entry form that captures:
    - Display validation errors
    - Calculate P&L automatically
 
-5. **Add component tests** (`apps/web/src/components/__tests__/TradeForm.test.tsx`)
+5. **Complete component tests** (`apps/web/src/components/__tests__/TradeForm.test.tsx`)
+   - Test file already exists with TODO(student) markers
+   - Find test functions with `pass` statements
+   - Replace `pass` with actual test implementations
    - Test form rendering
    - Test validation error display
    - Test P&L calculation

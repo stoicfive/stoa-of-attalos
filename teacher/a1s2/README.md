@@ -68,11 +68,14 @@ A SQLAlchemy model that maps to the existing `trading.trades` table:
    - Create session fixture
    - Add setup/teardown logic
 
-5. **Write model tests** (`apps/api/tests/test_trade_model.py`)
-   - Test CRUD operations
+5. **Complete model tests** (`apps/api/tests/test_trade_model.py`)
+   - Test file already exists with TODO(student) markers
+   - Find test functions with `pass` statements
+   - Replace `pass` with actual test implementations
+   - Test CRUD operations (create, read, update, delete)
    - Test P&L calculation
-   - Test constraints
-   - Test queries
+   - Test CHECK constraints (negative values should fail)
+   - Test queries and filters
 
 6. **Verify and submit**
    - Run `./scripts/check-a1s2.sh`

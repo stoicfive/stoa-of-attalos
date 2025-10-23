@@ -8,7 +8,8 @@ import pytest
 from decimal import Decimal
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
-from apps.api.models.trade import Trade
+# TODO(student): Import Trade from trade_model
+# from ..trade_model import Trade
 
 
 def test_create_trade(db_session):

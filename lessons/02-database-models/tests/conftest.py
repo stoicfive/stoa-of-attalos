@@ -7,7 +7,8 @@ TODO(student): Create test database fixtures
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from apps.api.models.trade import Base
+# TODO(student): Import Base from trade_model
+# from ..trade_model import Base
 
 # TODO(student): Define test database URL
 # Hint: Use a separate test database to avoid affecting dev data

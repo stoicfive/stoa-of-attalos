@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-interface TaskState {
-  [key: string]: boolean;
-}
+type TaskState = Record<string, boolean>;
 
 interface SessionState {
   tasks: TaskState;
@@ -29,6 +27,8 @@ export function useSessionState(sessionId: string, taskIds: string[]) {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const savedState: SessionState = JSON.parse(saved);
+        // Intentionally setting state on mount to restore saved session
+        // This only runs once and is the correct pattern for hydration
         if (savedState.tasks) setTasks(savedState.tasks);
         if (savedState.expanded) setExpanded(savedState.expanded);
         if (savedState.sessionCompleted) setSessionCompleted(savedState.sessionCompleted);

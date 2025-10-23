@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Circle } from "lucide-react";
 
 interface TaskCardProps {
-  id: string;
+  id?: string; // Reserved for future use (analytics, tracking)
   title: string;
   description?: string;
   isCompleted: boolean;
@@ -18,7 +18,6 @@ interface TaskCardProps {
 }
 
 export function TaskCard({
-  id,
   title,
   description,
   isCompleted,
@@ -32,7 +31,7 @@ export function TaskCard({
     <Card className={`transition-all duration-300 ${isCompleted ? "border-green-500/50" : ""}`}>
       <CardHeader 
         className="cursor-pointer hover:bg-accent/50 transition-colors"
-        onClick={() => isCompleted && onToggleExpand()}
+        onClick={() => onToggleExpand()}
       >
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3 flex-1">

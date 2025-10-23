@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCheck } from "lucide-react";
@@ -9,28 +9,26 @@ interface CompletionModalProps {
   isOpen: boolean;
   onClose: () => void;
   sessionTitle: string;
-  nextSessionUrl?: string;
-  nextSessionLabel?: string;
+  nextSessionUrl?: string; // Reserved for future use (navigation button)
+  nextSessionLabel?: string; // Reserved for future use (button label)
 }
 
 export function CompletionModal({
   isOpen,
   onClose,
-  sessionTitle,
-  nextSessionUrl,
-  nextSessionLabel = "Next Session"
+  sessionTitle
 }: CompletionModalProps) {
   const [isClosing, setIsClosing] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
       setIsClosing(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 300);
-  };
+  }, [onClose]);
 
   // Handle Escape key
   useEffect(() => {
@@ -42,7 +40,7 @@ export function CompletionModal({
 
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
   // Focus trap
   useEffect(() => {

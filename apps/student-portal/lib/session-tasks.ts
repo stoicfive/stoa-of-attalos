@@ -119,12 +119,21 @@ describe('TradeForm', () => {
       title: "Run All Checks",
       description: "Verify everything works",
       details: [
+        "Navigate to project root directory",
         "Run: npm run check:all",
         "Verify all tests pass",
         "Check coverage >= 70%",
         "Fix any ESLint errors",
-        "Run: ./scripts/check-a1s1.sh"
-      ]
+        "Run validation: ./scripts/check-a1s1.sh"
+      ],
+      codeExample: `# From project root directory:
+cd /path/to/stoa-of-attalos
+
+# Run all checks
+npm run check:all
+
+# Run session validation
+./scripts/check-a1s1.sh`
     }
   ],
   
@@ -235,11 +244,20 @@ def test_create_trade(db_session):
       title: "Verify and Submit",
       description: "Run validation script",
       details: [
+        "Navigate to project root directory",
         "Run: ./scripts/check-a1s2.sh",
         "Verify 70%+ coverage",
         "Check all tests pass",
         "Fix any issues"
-      ]
+      ],
+      codeExample: `# From project root directory:
+cd /path/to/stoa-of-attalos
+
+# Run session validation
+./scripts/check-a1s2.sh
+
+# If tests fail, run individually:
+poetry run pytest apps/api/tests/ -v`
     }
   ],
   
@@ -330,8 +348,9 @@ def create_trade(trade: TradeCreate, db: Session = Depends(get_db)):
         "Use FastAPI TestClient to test endpoints",
         "Test POST, GET, PUT, DELETE endpoints",
         "Test error cases (404 Not Found, 400 Bad Request)",
+        "Navigate to project root directory",
         "Run: poetry run pytest apps/api/tests/ -v",
-        "Run: ./scripts/check-a1s3.sh",
+        "Run validation: ./scripts/check-a1s3.sh",
         "Verify 70%+ coverage"
       ],
       files: ["apps/api/tests/test_trades_api.py"],
@@ -342,7 +361,16 @@ def test_create_trade(client):
     # Hint: response = client.post("/api/trades", json={...})
     # Hint: assert response.status_code == 201
     # Hint: assert response.json()["symbol"] == "AAPL"
-    pass  # Replace this with your implementation`
+    pass  # Replace this with your implementation
+
+# From project root directory:
+cd /path/to/stoa-of-attalos
+
+# Run tests
+poetry run pytest apps/api/tests/ -v
+
+# Run validation
+./scripts/check-a1s3.sh`
     }
   ]
 };

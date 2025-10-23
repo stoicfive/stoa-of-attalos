@@ -4,20 +4,20 @@
 
 ---
 
-## ❌ DO NOT USE: `npm run check:all`
+## ⚠️ STUDENTS: Use Session Scripts Instead
+
+### `npm run check:all` - For Developers/CI
 
 **What it does:**
-- Runs lint, typecheck, test, and format:check on **ALL files**
-- Checks portal files
-- Checks infrastructure files
-- Checks documentation
-- Checks everything in the monorepo
+- Runs lint, typecheck, test, and format:check on student workspace files
+- Now properly ignores portal, docs, and infrastructure
+- Checks apps/web, apps/api, packages
 
-**Why students shouldn't use it:**
-- Will fail on portal files (not their responsibility)
-- Will fail on infrastructure they didn't touch
-- Confusing error messages
-- Not scoped to their work
+**Why students should still use session scripts:**
+- `npm run check:all` checks ALL student workspaces (web + api + packages)
+- Session scripts check ONLY files for that specific session
+- Session scripts are scoped and focused
+- Clearer, more relevant error messages
 
 ---
 

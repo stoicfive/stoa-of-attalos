@@ -20,21 +20,8 @@ import { useState, useEffect, useRef } from "react";
 const STORAGE_KEY = 'a1s1-session-state';
 
 export default function SessionA1S1Activity() {
-  // Load initial state from localStorage
-  const loadState = () => {
-    if (typeof window === 'undefined') return null;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
-  };
-
-  const savedState = loadState();
-
   // Track completion of each task
-  const [tasks, setTasks] = useState(savedState?.tasks || {
+  const [tasks, setTasks] = useState({
     python: false,
     poetry: false,
     postgresql: false,
@@ -44,7 +31,7 @@ export default function SessionA1S1Activity() {
   });
 
   // Track expanded state of each task
-  const [expanded, setExpanded] = useState(savedState?.expanded || {
+  const [expanded, setExpanded] = useState({
     python: true,
     poetry: true,
     postgresql: true,
@@ -54,7 +41,23 @@ export default function SessionA1S1Activity() {
   });
 
   // Track if user has dismissed the completion modal
-  const [sessionCompleted, setSessionCompleted] = useState(savedState?.sessionCompleted || false);
+  const [sessionCompleted, setSessionCompleted] = useState(false);
+
+  // Load state from localStorage on mount (client-side only)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const savedState = JSON.parse(saved);
+        if (savedState.tasks) setTasks(savedState.tasks);
+        if (savedState.expanded) setExpanded(savedState.expanded);
+        if (savedState.sessionCompleted) setSessionCompleted(savedState.sessionCompleted);
+      }
+    } catch (error) {
+      console.error('Failed to load session state:', error);
+    }
+  }, []);
 
   // Ref for modal focus trap
   const modalRef = useRef<HTMLDivElement>(null);

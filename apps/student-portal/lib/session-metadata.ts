@@ -45,7 +45,26 @@ export const SESSION_METADATA: Record<string, SessionMetadata> = {
       "Understand core Python concepts"
     ],
     nextSessionId: "a1s3",
-    nextSessionTitle: "Session A1S3: Advanced Python"
+    nextSessionTitle: "Session A1S3: Object-Oriented Programming"
+  },
+  "a1s3": {
+    id: "a1s3",
+    title: "Session A1S3: Object-Oriented Programming",
+    description: "Master object-oriented programming concepts in Python including classes, objects, inheritance, and encapsulation.",
+    duration: "~75 minutes",
+    taskCount: 6,
+    difficulty: "Intermediate",
+    arc: "Arc 1: Backend Foundation",
+    deliverables: [
+      "Create custom classes with attributes and methods",
+      "Implement inheritance and polymorphism",
+      "Understand encapsulation and data hiding",
+      "Work with class and instance variables",
+      "Use special methods (dunder methods)",
+      "Build a practical OOP project"
+    ],
+    nextSessionId: "a1s4",
+    nextSessionTitle: "Session A1S4: Working with Files and Data"
   }
 };
 

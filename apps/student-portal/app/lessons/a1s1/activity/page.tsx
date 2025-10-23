@@ -694,7 +694,7 @@ export default function SessionA1S1Activity() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:sticky lg:top-6 lg:self-start">
             {/* Progress Summary */}
             <Card>
               <CardHeader>

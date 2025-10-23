@@ -27,19 +27,19 @@ export const SESSION_METADATA: Record<string, SessionMetadata> = {
     arc: "Phase A: Foundation",
     language: "TypeScript",
     deliverables: [
-      "packages/types/src/trade.ts - Trade interface",
-      "packages/types/src/validators.ts - Validation functions",
-      "packages/types/src/__tests__/validators.test.ts - Unit tests (70%+ coverage)",
-      "apps/web/src/components/TradeForm.tsx - React form component",
-      "apps/web/src/components/__tests__/TradeForm.test.tsx - Component tests"
+      "lessons/01-typescript-basics/trade.ts - Trade interface",
+      "lessons/01-typescript-basics/validators.ts - Validation functions",
+      "lessons/01-typescript-basics/tests/validators.test.ts - Unit tests (70%+ coverage)",
+      "lessons/01-typescript-basics/TradeForm.tsx - React form component",
+      "lessons/01-typescript-basics/tests/TradeForm.test.tsx - Component tests"
     ],
     testCommand: "./scripts/check-a1s1.sh",
     hintsPath: "teacher/a1s1/hints.md",
     rubricPath: "teacher/a1s1/rubric.md",
     ideFiles: [
-      "packages/types/src/trade.ts",
-      "packages/types/src/validators.ts",
-      "apps/web/src/components/TradeForm.tsx"
+      "lessons/01-typescript-basics/trade.ts",
+      "lessons/01-typescript-basics/validators.ts",
+      "lessons/01-typescript-basics/tests/validators.test.ts"
     ],
     nextSessionId: "a1s2",
     nextSessionTitle: "Session A1S2: Database Models with SQLAlchemy"
@@ -54,19 +54,19 @@ export const SESSION_METADATA: Record<string, SessionMetadata> = {
     arc: "Phase A: Foundation",
     language: "Python",
     deliverables: [
-      "apps/api/models/trade.py - SQLAlchemy Trade model",
-      "apps/api/database.py - Database connection setup",
-      "alembic/versions/*.py - Database migration",
-      "apps/api/tests/conftest.py - Test fixtures",
-      "apps/api/tests/test_trade_model.py - Model tests (70%+ coverage)"
+      "lessons/02-database-models/trade_model.py - SQLAlchemy Trade model",
+      "lessons/02-database-models/database.py - Database connection setup",
+      "alembic/versions/*_create_trades_table.py - Migration file",
+      "lessons/02-database-models/tests/conftest.py - Pytest fixtures",
+      "lessons/02-database-models/tests/test_trade_model.py - Model tests (70%+ coverage)"
     ],
     testCommand: "./scripts/check-a1s2.sh",
     hintsPath: "teacher/a1s2/hints.md",
     rubricPath: "teacher/a1s2/rubric.md",
     ideFiles: [
-      "apps/api/models/trade.py",
-      "apps/api/database.py",
-      "apps/api/tests/test_trade_model.py"
+      "lessons/02-database-models/trade_model.py",
+      "lessons/02-database-models/database.py",
+      "lessons/02-database-models/tests/test_trade_model.py"
     ],
     nextSessionId: "a1s3",
     nextSessionTitle: "Session A1S3: FastAPI Endpoints"
@@ -81,18 +81,18 @@ export const SESSION_METADATA: Record<string, SessionMetadata> = {
     arc: "Phase A: Foundation",
     language: "Python",
     deliverables: [
-      "apps/api/routers/trades.py - REST API endpoints",
-      "apps/api/schemas/trade.py - Pydantic request/response models",
-      "apps/api/tests/test_trades_api.py - API tests (70%+ coverage)",
+      "lessons/03-api-endpoints/trades_router.py - REST API endpoints",
+      "lessons/03-api-endpoints/trade_schema.py - Pydantic request/response models",
+      "lessons/03-api-endpoints/tests/test_trades_api.py - API tests (70%+ coverage)",
       "API documentation - Auto-generated with FastAPI"
     ],
     testCommand: "./scripts/check-a1s3.sh",
     hintsPath: "teacher/a1s3/hints.md",
     rubricPath: "teacher/a1s3/rubric.md",
     ideFiles: [
-      "apps/api/routers/trades.py",
-      "apps/api/schemas/trade.py",
-      "apps/api/tests/test_trades_api.py"
+      "lessons/03-api-endpoints/trades_router.py",
+      "lessons/03-api-endpoints/trade_schema.py",
+      "lessons/03-api-endpoints/tests/test_trades_api.py"
     ],
     nextSessionId: "b1s1",
     nextSessionTitle: "Session B1S1: API Integration & State Management"

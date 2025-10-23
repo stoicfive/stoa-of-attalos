@@ -15,7 +15,9 @@ import {
     Terminal
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+
+const STORAGE_KEY = 'a1s1-session-state';
 
 export default function SessionA1S1Activity() {
   // Track completion of each task
@@ -40,6 +42,28 @@ export default function SessionA1S1Activity() {
 
   // Track if user has dismissed the completion modal
   const [sessionCompleted, setSessionCompleted] = useState(false);
+  
+  // Track modal closing animation
+  const [isClosing, setIsClosing] = useState(false);
+
+  // Load state from localStorage on mount (client-side only)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const savedState = JSON.parse(saved);
+        if (savedState.tasks) setTasks(savedState.tasks);
+        if (savedState.expanded) setExpanded(savedState.expanded);
+        if (savedState.sessionCompleted) setSessionCompleted(savedState.sessionCompleted);
+      }
+    } catch (error) {
+      console.error('Failed to load session state:', error);
+    }
+  }, []);
+
+  // Ref for modal focus trap
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const toggleTask = (taskId: keyof typeof tasks) => {
     setTasks(prev => {
@@ -67,8 +91,75 @@ export default function SessionA1S1Activity() {
   const showCompletionModal = allComplete && !sessionCompleted;
 
   const handleCloseModal = () => {
-    setSessionCompleted(true);
+    setIsClosing(true);
+    // Wait for animation to complete before actually closing
+    setTimeout(() => {
+      setSessionCompleted(true);
+      setIsClosing(false);
+      // Scroll to top smoothly after modal closes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 300); // Match animation duration
   };
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        tasks,
+        expanded,
+        sessionCompleted
+      }));
+    } catch (error) {
+      console.error('Failed to save session state:', error);
+    }
+  }, [tasks, expanded, sessionCompleted]);
+
+  // Handle Escape key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && showCompletionModal) {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [showCompletionModal]);
+
+  // Focus trap and initial focus for modal
+  useEffect(() => {
+    if (showCompletionModal && modalRef.current) {
+      const focusableElements = modalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      // Focus first element
+      firstElement?.focus();
+
+      // Trap focus within modal
+      const handleTab = (e: KeyboardEvent) => {
+        if (e.key !== 'Tab') return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement?.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement?.focus();
+          }
+        }
+      };
+
+      document.addEventListener('keydown', handleTab);
+      return () => document.removeEventListener('keydown', handleTab);
+    }
+  }, [showCompletionModal]);
 
   return (
     <div className="min-h-screen">
@@ -204,11 +295,13 @@ export default function SessionA1S1Activity() {
                         toggleTask("python");
                       }}
                       className="mt-1"
+                      aria-label={tasks.python ? "Mark Python installation as incomplete" : "Mark Python installation as complete"}
+                      aria-pressed={tasks.python}
                     >
                       {tasks.python ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-500" />
+                        <CheckCircle2 className="h-6 w-6 text-green-500" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-muted-foreground" />
+                        <Circle className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                       )}
                     </button>
                     <div className="flex-1">
@@ -227,7 +320,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.python && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Python is the primary language for backend development in this course.
                 </p>
@@ -273,11 +366,13 @@ export default function SessionA1S1Activity() {
                         toggleTask("poetry");
                       }}
                       className="mt-1"
+                      aria-label={tasks.poetry ? "Mark Poetry installation as incomplete" : "Mark Poetry installation as complete"}
+                      aria-pressed={tasks.poetry}
                     >
                       {tasks.poetry ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-500" />
+                        <CheckCircle2 className="h-6 w-6 text-green-500" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-muted-foreground" />
+                        <Circle className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                       )}
                     </button>
                     <div className="flex-1">
@@ -296,7 +391,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.poetry && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Poetry manages Python dependencies and virtual environments.
                 </p>
@@ -341,11 +436,13 @@ export default function SessionA1S1Activity() {
                         toggleTask("postgresql");
                       }}
                       className="mt-1"
+                      aria-label={tasks.postgresql ? "Mark PostgreSQL installation as incomplete" : "Mark PostgreSQL installation as complete"}
+                      aria-pressed={tasks.postgresql}
                     >
                       {tasks.postgresql ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-500" />
+                        <CheckCircle2 className="h-6 w-6 text-green-500" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-muted-foreground" />
+                        <Circle className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                       )}
                     </button>
                     <div className="flex-1">
@@ -364,7 +461,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.postgresql && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   PostgreSQL is the database system we&apos;ll use throughout the course.
                 </p>
@@ -407,11 +504,13 @@ export default function SessionA1S1Activity() {
                         toggleTask("docker");
                       }}
                       className="mt-1"
+                      aria-label={tasks.docker ? "Mark Docker installation as incomplete" : "Mark Docker installation as complete"}
+                      aria-pressed={tasks.docker}
                     >
                       {tasks.docker ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-500" />
+                        <CheckCircle2 className="h-6 w-6 text-green-500" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-muted-foreground" />
+                        <Circle className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                       )}
                     </button>
                     <div className="flex-1">
@@ -430,7 +529,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.docker && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Docker provides consistent development environments.
                 </p>
@@ -466,11 +565,13 @@ export default function SessionA1S1Activity() {
                         toggleTask("vscode");
                       }}
                       className="mt-1"
+                      aria-label={tasks.vscode ? "Mark VS Code installation as incomplete" : "Mark VS Code installation as complete"}
+                      aria-pressed={tasks.vscode}
                     >
                       {tasks.vscode ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-500" />
+                        <CheckCircle2 className="h-6 w-6 text-green-500" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-muted-foreground" />
+                        <Circle className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                       )}
                     </button>
                     <div className="flex-1">
@@ -489,7 +590,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.vscode && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   VS Code is the recommended editor for this course.
                 </p>
@@ -536,11 +637,13 @@ export default function SessionA1S1Activity() {
                         toggleTask("git");
                       }}
                       className="mt-1"
+                      aria-label={tasks.git ? "Mark Git installation as incomplete" : "Mark Git installation as complete"}
+                      aria-pressed={tasks.git}
                     >
                       {tasks.git ? (
-                        <CheckCircle2 className="h-6 w-6 text-green-500" />
+                        <CheckCircle2 className="h-6 w-6 text-green-500" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-muted-foreground" />
+                        <Circle className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
                       )}
                     </button>
                     <div className="flex-1">
@@ -559,7 +662,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.git && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Git is essential for version control and collaboration.
                 </p>
@@ -591,7 +694,7 @@ export default function SessionA1S1Activity() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:sticky lg:top-6 lg:self-start">
             {/* Progress Summary */}
             <Card>
               <CardHeader>
@@ -670,21 +773,38 @@ export default function SessionA1S1Activity() {
 
       {/* Completion Modal */}
       {showCompletionModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <Card className="max-w-md w-full border-green-500 animate-in zoom-in-95 duration-300">
+        <div 
+          className={`fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 ${isClosing ? 'fade-out' : ''}`}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              handleCloseModal();
+            }
+          }}
+        >
+          <Card 
+            ref={modalRef}
+            className={`max-w-md w-full border-green-500 ${isClosing ? 'zoom-out-95' : 'zoom-in-95'}`}
+          >
             <CardContent className="pt-6">
               <div className="text-center py-8">
-                <CheckCheck className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Session Complete!</h3>
+                <CheckCheck className="h-16 w-16 text-green-500 mx-auto mb-4" aria-hidden="true" />
+                <h3 id="modal-title" className="text-2xl font-bold mb-2">Session Complete!</h3>
                 <p className="text-muted-foreground mb-6">
                   Great job! You&apos;ve completed all tasks for this session.
                 </p>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" onClick={handleCloseModal}>
+                  <Button 
+                    size="lg" 
+                    onClick={handleCloseModal}
+                    aria-label="Continue to completion summary"
+                  >
                     Continue
                   </Button>
                   <p className="text-xs text-muted-foreground">
-                    Click to view completion summary
+                    Press Escape or click outside to close
                   </p>
                 </div>
               </div>

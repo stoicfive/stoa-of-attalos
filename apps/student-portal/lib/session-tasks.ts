@@ -116,24 +116,28 @@ describe('TradeForm', () => {
     },
     {
       id: "run-all-checks",
-      title: "Run Validation Script",
-      description: "Verify your implementation works",
+      title: "Run Lesson Validation",
+      description: "Verify your A1S1 implementation works",
       details: [
         "Navigate to project root directory",
-        "Run session validation: ./scripts/check-a1s1.sh",
-        "Script will check: linting, type checking, tests, coverage, formatting",
-        "Verify all tests pass",
-        "Check coverage >= 70%",
-        "Fix any errors reported by the script"
+        "Run: npm run check:a1s1",
+        "This checks ONLY your A1S1 files (not the entire project)",
+        "Script will verify: linting, type checking, tests, coverage, formatting",
+        "All tests must pass",
+        "Coverage must be >= 70%",
+        "Fix any errors reported"
       ],
       codeExample: `# From project root directory:
 cd /path/to/stoa-of-attalos
 
-# Run session validation (checks only your lesson files)
+# Run A1S1 validation (checks only A1S1 lesson files)
+npm run check:a1s1
+
+# Alternative: run the script directly
 ./scripts/check-a1s1.sh
 
 # If you need to run individual checks:
-npm test                    # Run tests
+npm test                    # Run all tests
 npm run lint                # Check linting
 npm run typecheck           # Check types
 npm run format              # Fix formatting`
@@ -244,11 +248,12 @@ def test_create_trade(db_session):
     },
     {
       id: "verify-and-submit",
-      title: "Verify and Submit",
-      description: "Run validation script",
+      title: "Run Lesson Validation",
+      description: "Verify your A1S2 implementation works",
       details: [
         "Navigate to project root directory",
-        "Run: ./scripts/check-a1s2.sh",
+        "Run: npm run check:a1s2",
+        "This checks ONLY your A1S2 files (database models)",
         "Verify 70%+ coverage",
         "Check all tests pass",
         "Fix any issues"
@@ -256,7 +261,10 @@ def test_create_trade(db_session):
       codeExample: `# From project root directory:
 cd /path/to/stoa-of-attalos
 
-# Run session validation
+# Run A1S2 validation (checks only A1S2 lesson files)
+npm run check:a1s2
+
+# Alternative: run the script directly
 ./scripts/check-a1s2.sh
 
 # If tests fail, run individually:
@@ -342,8 +350,8 @@ def create_trade(trade: TradeCreate, db: Session = Depends(get_db)):
     },
     {
       id: "complete-api-tests",
-      title: "Complete API Tests",
-      description: "Fill in test implementations (tests already exist with TODO markers)",
+      title: "Complete API Tests & Run Validation",
+      description: "Fill in test implementations and verify your A1S3 work",
       details: [
         "Open apps/api/tests/test_trades_api.py",
         "Find test functions with TODO(student) comments",
@@ -352,8 +360,8 @@ def create_trade(trade: TradeCreate, db: Session = Depends(get_db)):
         "Test POST, GET, PUT, DELETE endpoints",
         "Test error cases (404 Not Found, 400 Bad Request)",
         "Navigate to project root directory",
-        "Run: poetry run pytest apps/api/tests/ -v",
-        "Run validation: ./scripts/check-a1s3.sh",
+        "Run: npm run check:a1s3",
+        "This checks ONLY your A1S3 files (API endpoints)",
         "Verify 70%+ coverage"
       ],
       files: ["apps/api/tests/test_trades_api.py"],
@@ -369,11 +377,14 @@ def test_create_trade(client):
 # From project root directory:
 cd /path/to/stoa-of-attalos
 
-# Run tests
-poetry run pytest apps/api/tests/ -v
+# Run A1S3 validation (checks only A1S3 lesson files)
+npm run check:a1s3
 
-# Run validation
-./scripts/check-a1s3.sh`
+# Alternative: run the script directly
+./scripts/check-a1s3.sh
+
+# If tests fail, run individually:
+poetry run pytest apps/api/tests/ -v`
     }
   ]
 };

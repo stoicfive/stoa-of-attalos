@@ -9,7 +9,7 @@ A complete development environment with automated quality checks, progressive le
 **Watch the intro video** to see what you'll build in 8 sessions:
 
 > 📹 **Video:** [Meet Nova - Your AI Professor](docs/student-resources/videos/stoa-of-attalos-intro.mp4)
-> ⏱️ **Duration:** ~3 minutes  
+> ⏱️ **Duration:** ~1 minute  
 > 📚 **Topics:** Course structure, tech stack, learning approach
 
 *Note: Video file is 37MB. For best experience, we recommend uploading to YouTube and linking here.*

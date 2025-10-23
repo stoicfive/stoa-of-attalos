@@ -53,6 +53,7 @@ export default function SessionA1S1Activity() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const savedState = JSON.parse(saved);
+        // Intentionally setting state on mount - correct pattern for hydration
         if (savedState.tasks) setTasks(savedState.tasks);
         if (savedState.expanded) setExpanded(savedState.expanded);
         if (savedState.sessionCompleted) setSessionCompleted(savedState.sessionCompleted);

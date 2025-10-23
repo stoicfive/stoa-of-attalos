@@ -36,7 +36,7 @@ export function useSessionState(sessionId: string, taskIds: string[]) {
     } catch (error) {
       console.error('Failed to load session state:', error);
     }
-  }, [STORAGE_KEY]);
+  }, []);
 
   // Save state to localStorage whenever it changes
   useEffect(() => {

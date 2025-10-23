@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,9 +14,9 @@ export default function Home() {
           <div className="flex items-center gap-8">
             <h1 className="text-xl font-bold">Stoa of Attalos</h1>
             <div className="hidden md:flex gap-6">
-              <a href="/" className="text-sm hover:text-primary transition-colors">
+              <Link href="/" className="text-sm hover:text-primary transition-colors">
                 Dashboard
-              </a>
+              </Link>
               <a href="/lessons" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Lessons
               </a>

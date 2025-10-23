@@ -4,12 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { 
-  BookOpen, 
   Clock, 
   Target,
   ArrowLeft,
-  Lock,
-  CheckCircle2
+  Lock
 } from "lucide-react";
 
 export default function Lessons() {

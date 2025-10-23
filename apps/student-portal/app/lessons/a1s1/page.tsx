@@ -7,12 +7,7 @@ import {
 } from '@/components/session-overview';
 import { getSessionMetadata } from '@/lib/session-metadata';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Target,
-  CheckCircle2,
-  BookOpen,
-  Code
-} from "lucide-react";
+import { Target, CheckCircle2, BookOpen, Code, FileCode } from "lucide-react";
 
 export default function SessionA1S1() {
   const session = getSessionMetadata('a1s1');
@@ -38,13 +33,16 @@ export default function SessionA1S1() {
           {/* IDE Files Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-lg">Files to Create</CardTitle>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <FileCode className="h-5 w-5" />
+                Files to Create
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               {session.ideFiles?.map((file, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm">
-                  <Code className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                  <code className="text-xs bg-secondary px-2 py-1 rounded">{file}</code>
+                <div key={index} className="flex items-start gap-2 text-sm">
+                  <Code className="h-4 w-4 text-muted-foreground flex-shrink-0 mt-0.5" />
+                  <code className="text-xs bg-secondary px-2 py-1 rounded break-all">{file}</code>
                 </div>
               ))}
             </CardContent>
@@ -57,246 +55,141 @@ export default function SessionA1S1() {
         </>
       }
     >
-            {/* Learning Objectives */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <Target className="h-6 w-6 text-primary" />
-                  <CardTitle>Learning Objectives</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Install Python 3.12+</p>
-                      <p className="text-sm text-muted-foreground">Set up Python environment with proper version</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Configure Poetry</p>
-                      <p className="text-sm text-muted-foreground">Install and configure Python dependency management</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Set up PostgreSQL</p>
-                      <p className="text-sm text-muted-foreground">Install database and create initial databases</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Install Docker Desktop</p>
-                      <p className="text-sm text-muted-foreground">Set up containerization platform</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Configure VS Code</p>
-                      <p className="text-sm text-muted-foreground">Install editor and essential extensions</p>
-                    </div>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+      {/* Session Overview */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <BookOpen className="h-5 w-5" />
+            Session Overview
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p className="text-muted-foreground">
+            In this session, you&apos;ll build the foundation of your Trading Journal SaaS by creating 
+            a trade entry form with TypeScript. You&apos;ll learn Test-Driven Development (TDD) principles 
+            while implementing data validation and React components.
+          </p>
+          <p className="text-muted-foreground">
+            By the end of this session, you&apos;ll have a working trade entry form with comprehensive 
+            validation, unit tests achieving 70%+ coverage, and a solid understanding of the test pyramid.
+          </p>
+        </CardContent>
+      </Card>
 
-            {/* Prerequisites */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Prerequisites</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>Basic command line/terminal knowledge</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>Computer with at least 8GB RAM (16GB recommended)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>10GB free disk space</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>macOS, Windows, or Linux operating system</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* What You'll Build */}
-            <Card>
-              <CardHeader>
-                <CardTitle>What You&apos;ll Build</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  In this session, you&apos;ll set up a complete development environment that will be used 
-                  throughout the entire course. You&apos;ll verify each installation and ensure everything 
-                  works together properly.
+      {/* Learning Objectives */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Target className="h-5 w-5" />
+            Learning Objectives
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium">Set up Next.js project with TypeScript</p>
+                <p className="text-sm text-muted-foreground">
+                  Configure the project structure and TypeScript settings
                 </p>
-                <div className="bg-secondary p-4 rounded-lg">
-                  <p className="text-sm font-mono">
-                    ✓ Python 3.12+ installed and verified<br />
-                    ✓ Poetry configured for dependency management<br />
-                    ✓ PostgreSQL running locally<br />
-                    ✓ Docker Desktop installed<br />
-                    ✓ VS Code with Python extensions<br />
-                    ✓ Git configured with your identity
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Deliverables */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Deliverables</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <FileText className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Screenshot of successful Python version check</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <FileText className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Screenshot of Poetry installation</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <FileText className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>PostgreSQL connection test output</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <FileText className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Docker version verification</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Quick Actions</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Link href="/lessons/a1s1/activity">
-                  <Button className="w-full" size="lg">
-                    <Play className="mr-2 h-4 w-4" />
-                    Start Session
-                  </Button>
-                </Link>
-                <Link href="/setup">
-                  <Button variant="outline" className="w-full">
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Setup Guide
-                  </Button>
-                </Link>
-                <Button variant="outline" className="w-full" disabled>
-                  <Lightbulb className="mr-2 h-4 w-4" />
-                  View Hints
-                </Button>
-                <Button variant="outline" className="w-full" disabled>
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Rubric
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Session Info */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Session Info</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm">
-                <div>
-                  <p className="text-muted-foreground mb-1">Duration</p>
-                  <p className="font-medium">45 minutes</p>
-                </div>
-                <div>
-                  <p className="text-muted-foreground mb-1">Difficulty</p>
-                  <Badge variant="success">Beginner</Badge>
-                </div>
-                <div>
-                  <p className="text-muted-foreground mb-1">Arc</p>
-                  <p className="font-medium">Arc 1: Backend Foundation</p>
-                </div>
-                <div>
-                  <p className="text-muted-foreground mb-1">Language</p>
-                  <p className="font-medium">Python</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Resources */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Resources</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <a 
-                  href="https://docs.python.org/3/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-accent transition-colors"
-                >
-                  <span className="text-sm">Python Docs</span>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                </a>
-                <a 
-                  href="https://python-poetry.org/docs/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-accent transition-colors"
-                >
-                  <span className="text-sm">Poetry Docs</span>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                </a>
-                <a 
-                  href="https://www.postgresql.org/docs/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-lg border border-border hover:bg-accent transition-colors"
-                >
-                  <span className="text-sm">PostgreSQL Docs</span>
-                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                </a>
-              </CardContent>
-            </Card>
-
-            {/* Next Session */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Next Session</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-3">
-                  After completing this session, you&apos;ll move on to:
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium">Create a basic data model for trade entries</p>
+                <p className="text-sm text-muted-foreground">
+                  Define the Trade interface with proper TypeScript types
                 </p>
-                <div className="p-3 rounded-lg border border-border">
-                  <p className="font-medium mb-1">A1S2: Database Models</p>
-                  <p className="text-sm text-muted-foreground">
-                    Learn SQLAlchemy ORM and create database models
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium">Implement validation functions</p>
+                <p className="text-sm text-muted-foreground">
+                  Create functions to validate symbols, prices, and shares
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium">Write unit tests with 70%+ coverage</p>
+                <p className="text-sm text-muted-foreground">
+                  Test validation logic and edge cases using Vitest
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium">Build a trade entry form component</p>
+                <p className="text-sm text-muted-foreground">
+                  Create a React form with validation and P&L calculation
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-medium">Understand the test pyramid</p>
+                <p className="text-sm text-muted-foreground">
+                  Learn the 70/25/5 split: unit, integration, and E2E tests
+                </p>
+              </div>
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      {/* Prerequisites */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Prerequisites</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              Node.js 20+ installed
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              Basic understanding of TypeScript
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              Familiarity with React concepts
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              VS Code or preferred IDE installed
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      {/* What You'll Build */}
+      <Card>
+        <CardHeader>
+          <CardTitle>What You&apos;ll Build</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-4">
+            A trade entry form that captures stock trades with the following fields:
+          </p>
+          <div className="bg-secondary p-4 rounded-lg space-y-2 text-sm font-mono">
+            <div>• <span className="text-primary">Symbol</span>: Stock ticker (e.g., &quot;AAPL&quot;)</div>
+            <div>• <span className="text-primary">Entry Price</span>: Price at which you entered</div>
+            <div>• <span className="text-primary">Exit Price</span>: Price at which you exited</div>
+            <div>• <span className="text-primary">Shares</span>: Number of shares traded</div>
+            <div>• <span className="text-primary">Date</span>: When the trade occurred</div>
+            <div>• <span className="text-primary">P&L</span>: Automatically calculated profit/loss</div>
           </div>
-        </div>
-      </div>
-    </div>
+        </CardContent>
+      </Card>
+    </SessionOverviewLayout>
   );
 }

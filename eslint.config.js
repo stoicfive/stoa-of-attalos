@@ -10,8 +10,18 @@ export default tseslint.config(
       '**/build/**',
       '**/.next/**',
       '**/coverage/**',
+      '**/htmlcov/**',
       '**/*.d.ts',
       'packages/types/src/**',
+      // Portal and infrastructure (not student files)
+      'apps/student-portal/**',
+      'docs/**',
+      'scripts/**',
+      'teacher/**',
+      '.devcontainer/**',
+      '.github/**',
+      'alembic/**',
+      'tests/**',
     ],
   },
   {

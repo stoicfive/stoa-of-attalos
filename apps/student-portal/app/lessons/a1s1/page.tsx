@@ -1,99 +1,62 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import {
+  SessionOverviewLayout,
+  SessionInfoCard,
+  QuickActionsCard,
+  DeliverablesCard,
+  NextSessionCard
+} from '@/components/session-overview';
+import { getSessionMetadata } from '@/lib/session-metadata';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { 
-  ArrowLeft,
-  Clock,
   Target,
   CheckCircle2,
   BookOpen,
-  FileText,
-  Lightbulb,
-  Play,
-  ExternalLink
+  Code
 } from "lucide-react";
 
 export default function SessionA1S1() {
+  const session = getSessionMetadata('a1s1');
+  
+  if (!session) return <div>Session not found</div>;
+
   return (
-    <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="border-b border-border">
-        <div className="container-custom flex justify-between items-center h-16">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="text-xl font-bold hover:text-primary transition-colors">
-              Stoa of Attalos
-            </Link>
-            <div className="hidden md:flex gap-6">
-              <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Dashboard
-              </Link>
-              <Link href="/lessons" className="text-sm hover:text-primary transition-colors">
-                Lessons
-              </Link>
-              <Link href="/setup" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Setup
-              </Link>
-              <Link href="/resources" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Resources
-              </Link>
-            </div>
-          </div>
-          <ThemeToggle />
-        </div>
-      </nav>
-
-      {/* Session Header */}
-      <section className="border-b border-border bg-accent/5">
-        <div className="container-custom py-12">
-          <Link href="/lessons" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-4">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to All Lessons
-          </Link>
+    <SessionOverviewLayout
+      sessionId={session.id}
+      sessionTitle={session.title}
+      sessionDescription={session.description}
+      status="Not Started"
+      sidebar={
+        <>
+          <SessionInfoCard
+            duration={session.duration}
+            taskCount={session.taskCount}
+            difficulty={session.difficulty}
+          />
+          <QuickActionsCard sessionId={session.id} />
+          <DeliverablesCard deliverables={session.deliverables} />
           
-          <div className="flex items-start justify-between mb-6">
-            <div>
-              <div className="flex items-center gap-3 mb-3">
-                <h1 className="text-4xl font-bold">Session A1S1</h1>
-                <Badge variant="info">Not Started</Badge>
-              </div>
-              <h2 className="text-2xl text-muted-foreground mb-4">Environment Setup</h2>
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <span className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  45 minutes
-                </span>
-                <span className="flex items-center gap-2">
-                  <Target className="h-4 w-4" />
-                  5 objectives
-                </span>
-                <span className="flex items-center gap-2">
-                  <BookOpen className="h-4 w-4" />
-                  Arc 1: Backend Foundation
-                </span>
-              </div>
-            </div>
-            <Link href="/lessons/a1s1/activity">
-              <Button size="lg">
-                <Play className="mr-2 h-5 w-5" />
-                Start Session
-              </Button>
-            </Link>
-          </div>
-
-          <p className="text-lg max-w-3xl">
-            Set up your complete development environment with Python, Poetry, PostgreSQL, Docker, and VS Code. 
-            This foundational session prepares you for all future work in the course.
-          </p>
-        </div>
-      </section>
-
-      {/* Session Content */}
-      <div className="container-custom py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          {/* IDE Files Card */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Files to Create</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {session.ideFiles?.map((file, index) => (
+                <div key={index} className="flex items-center gap-2 text-sm">
+                  <Code className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                  <code className="text-xs bg-secondary px-2 py-1 rounded">{file}</code>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+          
+          <NextSessionCard
+            nextSessionId={session.nextSessionId}
+            nextSessionTitle={session.nextSessionTitle}
+          />
+        </>
+      }
+    >
             {/* Learning Objectives */}
             <Card>
               <CardHeader>

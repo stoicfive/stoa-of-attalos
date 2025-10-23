@@ -53,26 +53,28 @@ export function validatePrice(price: number): boolean {
 }`
     },
     {
-      id: "write-unit-tests",
-      title: "Write Unit Tests",
-      description: "Test validation functions with 70%+ coverage",
+      id: "complete-unit-tests",
+      title: "Complete Unit Tests",
+      description: "Fill in test implementations (tests already exist with TODO markers)",
       details: [
-        "Create packages/types/src/__tests__/validators.test.ts",
-        "Test each validation function",
-        "Test edge cases (empty strings, negative numbers, etc.)",
+        "Open packages/types/src/__tests__/validators.test.ts",
+        "Find test functions with TODO(student) comments",
+        "Replace 'pass' statements with actual test code",
+        "Test each validation function with edge cases",
         "Run: npm test",
         "Verify 70%+ coverage: npm run test:coverage"
       ],
       files: ["packages/types/src/__tests__/validators.test.ts"],
-      codeExample: `describe('validateSymbol', () => {
+      codeExample: `// Test file already exists with this structure:
+describe('validateSymbol', () => {
   it('should accept valid symbols', () => {
-    expect(validateSymbol('AAPL')).toBe(true);
-    expect(validateSymbol('MSFT')).toBe(true);
+    // TODO(student): Implement test
+    // Hint: expect(validateSymbol('AAPL')).toBe(true);
   });
   
   it('should reject invalid symbols', () => {
-    expect(validateSymbol('aapl')).toBe(false);
-    expect(validateSymbol('TOOLONG')).toBe(false);
+    // TODO(student): Implement test
+    // Hint: expect(validateSymbol('aapl')).toBe(false);
   });
 });`
     },
@@ -90,17 +92,27 @@ export function validatePrice(price: number): boolean {
       files: ["apps/web/src/components/TradeForm.tsx"]
     },
     {
-      id: "add-component-tests",
-      title: "Add Component Tests",
-      description: "Test the TradeForm component",
+      id: "complete-component-tests",
+      title: "Complete Component Tests",
+      description: "Fill in component test implementations (tests already exist with TODO markers)",
       details: [
-        "Create apps/web/src/components/__tests__/TradeForm.test.tsx",
+        "Open apps/web/src/components/__tests__/TradeForm.test.tsx",
+        "Find test functions with TODO(student) comments",
+        "Replace 'pass' statements with actual test code",
         "Test form rendering",
         "Test validation error display",
         "Test P&L calculation",
         "Run: npm test"
       ],
-      files: ["apps/web/src/components/__tests__/TradeForm.test.tsx"]
+      files: ["apps/web/src/components/__tests__/TradeForm.test.tsx"],
+      codeExample: `// Test file already exists with this structure:
+describe('TradeForm', () => {
+  it('should render all form fields', () => {
+    // TODO(student): Render component and assert fields exist
+    // Hint: render(<TradeForm />);
+    // Hint: expect(screen.getByLabelText('Symbol')).toBeInTheDocument();
+  });
+});`
     },
     {
       id: "run-all-checks",
@@ -194,20 +206,29 @@ def db_session():
     Base.metadata.drop_all(engine)`
     },
     {
-      id: "write-model-tests",
-      title: "Write Model Tests",
-      description: "Test CRUD operations and constraints",
+      id: "complete-model-tests",
+      title: "Complete Model Tests",
+      description: "Fill in test implementations (tests already exist with TODO markers)",
       details: [
-        "Create apps/api/tests/test_trade_model.py",
-        "Test creating a trade",
-        "Test reading trades",
-        "Test updating trades",
-        "Test deleting trades",
+        "Open apps/api/tests/test_trade_model.py",
+        "Find test functions with TODO(student) comments",
+        "Replace 'pass' statements with actual test code",
+        "Test CRUD operations (create, read, update, delete)",
         "Test P&L calculation",
-        "Test CHECK constraints",
-        "Run: poetry run pytest apps/api/tests/ -v"
+        "Test CHECK constraints (negative prices should fail)",
+        "Run: poetry run pytest apps/api/tests/ -v",
+        "Verify 70%+ coverage"
       ],
-      files: ["apps/api/tests/test_trade_model.py"]
+      files: ["apps/api/tests/test_trade_model.py"],
+      codeExample: `# Test file already exists with this structure:
+def test_create_trade(db_session):
+    """Test creating a trade instance"""
+    # TODO(student): Create a trade and assert properties
+    # Hint: trade = Trade(symbol="AAPL", entry_price=Decimal("150.00"), ...)
+    # Hint: db_session.add(trade)
+    # Hint: db_session.commit()
+    # Hint: assert trade.id is not None
+    pass  # Replace this with your implementation`
     },
     {
       id: "verify-and-submit",
@@ -299,21 +320,29 @@ def create_trade(trade: TradeCreate, db: Session = Depends(get_db)):
       ]
     },
     {
-      id: "write-api-tests",
-      title: "Write API Tests",
-      description: "Test all endpoints",
+      id: "complete-api-tests",
+      title: "Complete API Tests",
+      description: "Fill in test implementations (tests already exist with TODO markers)",
       details: [
-        "Create apps/api/tests/test_trades_api.py",
-        "Use FastAPI TestClient",
-        "Test POST endpoint",
-        "Test GET endpoints",
-        "Test PUT endpoint",
-        "Test DELETE endpoint",
-        "Test error cases (404, 400)",
+        "Open apps/api/tests/test_trades_api.py",
+        "Find test functions with TODO(student) comments",
+        "Replace 'pass' statements with actual test code",
+        "Use FastAPI TestClient to test endpoints",
+        "Test POST, GET, PUT, DELETE endpoints",
+        "Test error cases (404 Not Found, 400 Bad Request)",
         "Run: poetry run pytest apps/api/tests/ -v",
-        "Run: ./scripts/check-a1s3.sh"
+        "Run: ./scripts/check-a1s3.sh",
+        "Verify 70%+ coverage"
       ],
-      files: ["apps/api/tests/test_trades_api.py"]
+      files: ["apps/api/tests/test_trades_api.py"],
+      codeExample: `# Test file already exists with this structure:
+def test_create_trade(client):
+    """Test POST /api/trades"""
+    # TODO(student): Send POST request and verify response
+    # Hint: response = client.post("/api/trades", json={...})
+    # Hint: assert response.status_code == 201
+    # Hint: assert response.json()["symbol"] == "AAPL"
+    pass  # Replace this with your implementation`
     }
   ]
 };

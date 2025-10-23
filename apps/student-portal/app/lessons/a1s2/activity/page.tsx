@@ -171,7 +171,7 @@ export default function SessionA1S2Activity() {
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-1">Dictionaries (key-value pairs):</p>
-                <code className="text-sm font-mono block">person = {&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25}</code>
+                <code className="text-sm font-mono block">person = {'{'}&#34;name&#34;: &#34;Alice&#34;, &#34;age&#34;: 25{'}'}</code>
               </div>
             </div>
           </div>

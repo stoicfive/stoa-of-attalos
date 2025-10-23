@@ -307,7 +307,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.python && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Python is the primary language for backend development in this course.
                 </p>
@@ -378,7 +378,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.poetry && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Poetry manages Python dependencies and virtual environments.
                 </p>
@@ -448,7 +448,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.postgresql && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   PostgreSQL is the database system we&apos;ll use throughout the course.
                 </p>
@@ -516,7 +516,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.docker && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Docker provides consistent development environments.
                 </p>
@@ -577,7 +577,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.vscode && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   VS Code is the recommended editor for this course.
                 </p>
@@ -649,7 +649,7 @@ export default function SessionA1S1Activity() {
                 </div>
               </CardHeader>
               {expanded.git && (
-                <CardContent className="space-y-4 animate-in slide-in-from-top-2 duration-300">
+                <CardContent className="space-y-4 slide-in-from-top-2">
                 <p className="text-sm text-muted-foreground">
                   Git is essential for version control and collaboration.
                 </p>
@@ -773,7 +773,7 @@ export default function SessionA1S1Activity() {
         >
           <Card 
             ref={modalRef}
-            className="max-w-md w-full border-green-500 animate-in zoom-in-95 duration-300"
+            className="max-w-md w-full border-green-500 zoom-in-95"
           >
             <CardContent className="pt-6">
               <div className="text-center py-8">

@@ -56,8 +56,9 @@ lerna-debug.log*
 # OS files
 Thumbs.db
 
-# Personal notes
-docs/notes/
+# Personal notes (but allow README)
+docs/notes/*
+!docs/notes/README.md
 
 # Large media files (host externally)
 *.mp4

@@ -2,20 +2,22 @@
 Complete database connection implementation - Reference Solution
 """
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 import os
+from typing import Generator
 
-DATABASE_URL = os.getenv(
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session, sessionmaker
+
+DATABASE_URL: str = os.getenv(
     "DATABASE_URL",
     "postgresql://postgres:postgres@localhost:5432/trading_journal"
-)
+) or "postgresql://postgres:postgres@localhost:5432/trading_journal"
 
 engine = create_engine(DATABASE_URL, echo=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-def get_db():
+def get_db() -> Generator[Session, None, None]:
     """
     Get database session
     

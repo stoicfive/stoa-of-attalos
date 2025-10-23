@@ -50,7 +50,7 @@ export default function Dashboard() {
                     <BookOpen className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold">0/8</p>
+                    <p className="text-2xl font-bold">0/3</p>
                     <p className="text-sm text-muted-foreground">Sessions Complete</p>
                   </div>
                 </div>

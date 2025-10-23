@@ -48,7 +48,7 @@ export default function Lessons() {
           </Link>
           <h1 className="text-4xl font-bold mb-4">Course Overview</h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            24 hands-on sessions across 3 arcs. Build a complete Trading Journal SaaS application from scratch.
+            Build a complete Trading Journal SaaS application from scratch. Start with Phase A: Foundation (3 sessions).
           </p>
           <div className="flex items-center gap-6 mt-6 text-sm">
             <div className="flex items-center gap-2">
@@ -71,29 +71,29 @@ export default function Lessons() {
         </div>
       </section>
 
-      {/* Arc 1: Backend Foundation */}
+      {/* Phase A: Foundation */}
       <section className="border-b border-border">
         <div className="container-custom py-12">
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Arc 1: Backend Foundation</h2>
+                <h2 className="text-3xl font-bold mb-2">Phase A: Foundation</h2>
                 <p className="text-muted-foreground">
-                  Master Python backend development with FastAPI and SQLAlchemy
+                  Master TypeScript, Python backend with FastAPI and SQLAlchemy
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-bold">0/8</p>
+                <p className="text-2xl font-bold">0/3</p>
                 <p className="text-sm text-muted-foreground">Sessions Complete</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
-                ~8 hours
+                ~2.5 hours
               </span>
               <span>•</span>
-              <span>Python, FastAPI, SQLAlchemy, PostgreSQL</span>
+              <span>TypeScript, Python, FastAPI, SQLAlchemy, PostgreSQL</span>
             </div>
           </div>
 
@@ -315,7 +315,7 @@ export default function Lessons() {
               </div>
               <div className="text-right">
                 <p className="text-2xl font-bold text-muted-foreground">Locked</p>
-                <p className="text-sm text-muted-foreground">Complete Arc 1</p>
+                <p className="text-sm text-muted-foreground">Complete Phase A</p>
               </div>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -334,11 +334,11 @@ export default function Lessons() {
                 <Lock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Arc 2 is Locked</h3>
                 <p className="text-sm text-muted-foreground max-w-md mx-auto mb-6">
-                  Complete all 8 sessions in Arc 1: Backend Foundation to unlock frontend development.
+                  Complete all 3 sessions in Phase A: Foundation to unlock frontend development.
                 </p>
                 <Link href="/lessons/a1s1">
                   <Button>
-                    Start Arc 1
+                    Start Phase A
                   </Button>
                 </Link>
               </div>
@@ -379,7 +379,7 @@ export default function Lessons() {
                 <Lock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">Arc 3 is Locked</h3>
                 <p className="text-sm text-muted-foreground max-w-md mx-auto">
-                  Complete Arc 1 and Arc 2 to unlock full-stack integration and deployment.
+                  Complete Phase A and Arc 2 to unlock full-stack integration and deployment.
                 </p>
               </div>
             </CardContent>

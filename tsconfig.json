@@ -29,9 +29,18 @@
     "build",
     ".next",
     "coverage",
+    "htmlcov",
     "**/*.config.js",
     "packages/types/src/trade.ts",
     "packages/types/src/validators.ts",
-    "packages/types/src/__tests__/validators.test.ts"
+    "packages/types/src/__tests__/validators.test.ts",
+    "apps/student-portal",
+    "docs",
+    "scripts",
+    "teacher",
+    ".devcontainer",
+    ".github",
+    "alembic",
+    "tests"
   ]
 }

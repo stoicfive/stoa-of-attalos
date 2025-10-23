@@ -68,9 +68,9 @@ A simple trade entry form that captures:
    - Test validation error display
    - Test P&L calculation
 
-6. **Run all checks**
+6. **Run validation script**
    ```bash
-   npm run check:all
+   ./scripts/check-a1s1.sh
    ```
 
 ## ✅ Definition of Done (DoD)

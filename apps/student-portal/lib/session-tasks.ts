@@ -116,24 +116,27 @@ describe('TradeForm', () => {
     },
     {
       id: "run-all-checks",
-      title: "Run All Checks",
-      description: "Verify everything works",
+      title: "Run Validation Script",
+      description: "Verify your implementation works",
       details: [
         "Navigate to project root directory",
-        "Run: npm run check:all",
+        "Run session validation: ./scripts/check-a1s1.sh",
+        "Script will check: linting, type checking, tests, coverage, formatting",
         "Verify all tests pass",
         "Check coverage >= 70%",
-        "Fix any ESLint errors",
-        "Run validation: ./scripts/check-a1s1.sh"
+        "Fix any errors reported by the script"
       ],
       codeExample: `# From project root directory:
 cd /path/to/stoa-of-attalos
 
-# Run all checks
-npm run check:all
+# Run session validation (checks only your lesson files)
+./scripts/check-a1s1.sh
 
-# Run session validation
-./scripts/check-a1s1.sh`
+# If you need to run individual checks:
+npm test                    # Run tests
+npm run lint                # Check linting
+npm run typecheck           # Check types
+npm run format              # Fix formatting`
     }
   ],
   

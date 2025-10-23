@@ -6,15 +6,18 @@ import {
   CompletionModal,
   SessionProgressCard,
   SessionHelpCard,
-  SessionTipsCard
+  SessionTipsCard,
+  IDEActionsCard
 } from '@/components/session';
 import { useSessionState } from '@/hooks/use-session-state';
 import { getSessionTasks } from '@/lib/session-tasks';
+import { getSessionMetadata } from '@/lib/session-metadata';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertCircle, Code } from 'lucide-react';
 
 export default function SessionA1S1Activity() {
   const tasks = getSessionTasks('a1s1');
+  const session = getSessionMetadata('a1s1');
   const taskIds = tasks.map(t => t.id);
   
   const {
@@ -56,6 +59,13 @@ export default function SessionA1S1Activity() {
               completedCount={completedCount}
               totalTasks={totalTasks}
               estimatedMinutes={50}
+            />
+            <IDEActionsCard
+              sessionId="a1s1"
+              ideFiles={session?.ideFiles}
+              testCommand={session?.testCommand}
+              hintsPath={session?.hintsPath}
+              rubricPath={session?.rubricPath}
             />
             <SessionHelpCard />
             <SessionTipsCard tips={tips} />

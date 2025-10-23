@@ -58,3 +58,9 @@ Thumbs.db
 
 # Personal notes
 docs/notes/
+
+# Large media files (host externally)
+*.mp4
+*.mov
+*.avi
+*.webm

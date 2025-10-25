@@ -98,9 +98,10 @@ export function useVSCodeWorkspace(
         return;
       }
 
+      // Use direct file path format: /blob/branch/path/to/file
       const normalized = relativePath.replace(/^\/+/, "");
-      const query = `?path=${encodeURIComponent(normalized)}&version=${encodeURIComponent(DEFAULT_BRANCH)}`;
-      window.open(`${base}${query}`, "_blank", "noopener,noreferrer");
+      const fileUrl = `${base}/blob/${DEFAULT_BRANCH}/${normalized}`;
+      window.open(fileUrl, "_blank", "noopener,noreferrer");
     },
     [repoPath, openWeb]
   );

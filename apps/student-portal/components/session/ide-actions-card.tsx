@@ -2,6 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useVSCodeWorkspace } from "@/hooks/use-vscode-workspace";
 import {
   BookOpen,
@@ -21,6 +27,7 @@ interface IDEActionsCardProps {
   testCommand?: string;
   hintsPath?: string;
   rubricPath?: string;
+  starterFile?: string;
 }
 
 export function IDEActionsCard({
@@ -28,6 +35,7 @@ export function IDEActionsCard({
   testCommand,
   hintsPath,
   rubricPath,
+  starterFile,
 }: IDEActionsCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
@@ -41,6 +49,7 @@ export function IDEActionsCard({
     openProject,
     openPath,
     openWeb,
+    openWebFile,
     setWorkspacePath,
     clearWorkspacePath,
   } = useVSCodeWorkspace();
@@ -97,30 +106,69 @@ export function IDEActionsCard({
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Button
-              variant="default"
-              className="w-full"
-              onClick={openProject}
-            >
-              <Code className="mr-2 h-4 w-4" />
-              {hasWorkspacePath ? "Open Project in VS Code" : "Open in VS Code (Web)"}
-            </Button>
-            <Button
-              variant="secondary"
-              className="w-full"
-              onClick={openWeb}
-            >
-              <ExternalLink className="mr-2 h-4 w-4" />
-              VS Code for Web
-            </Button>
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={handleCopyCommand}
-            >
-              <Copy className="mr-2 h-4 w-4" />
-              {hasWorkspacePath ? "Copy VS Code Command" : "Copy Clone Command"}
-            </Button>
+            <TooltipProvider>
+              <Tooltip delayDuration={300}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="default"
+                    className="w-full"
+                    onClick={openProject}
+                  >
+                    <Code className="mr-2 h-4 w-4" />
+                    {hasWorkspacePath ? "Open Project in VS Code" : "Open in VS Code (Web)"}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <p>
+                    {hasWorkspacePath
+                      ? "Open the entire project in your local VS Code"
+                      : "Open the project in VS Code for Web (browser-based)"}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip delayDuration={300}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="secondary"
+                    className="w-full"
+                    onClick={() => starterFile ? openWebFile(starterFile) : openWeb()}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    {starterFile ? "Open Starter File in VS Code Web" : "VS Code for Web"}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <p>
+                    {starterFile
+                      ? "Jump directly to the main file you need to edit"
+                      : "Open the project in VS Code for Web"}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip delayDuration={300}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={handleCopyCommand}
+                  >
+                    <Copy className="mr-2 h-4 w-4" />
+                    {hasWorkspacePath ? "Copy VS Code Command" : "Copy Clone Command"}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  <p>
+                    {hasWorkspacePath
+                      ? "Copy command and paste it in your terminal to open VS Code"
+                      : "Copy git clone command and paste it in your terminal"}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             {copyStatus === "copied" && (
               <p className="text-xs text-green-500">Copied to clipboard.</p>
             )}

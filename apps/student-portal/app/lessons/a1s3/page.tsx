@@ -2,9 +2,9 @@ import {
   SessionOverviewLayout,
   SessionInfoCard,
   QuickActionsCard,
-  DeliverablesCard,
   NextSessionCard
 } from '@/components/session-overview';
+import { DeliverablesCard } from '@/components/session-overview';
 import { getSessionMetadata } from '@/lib/session-metadata';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Target, CheckCircle2, BookOpen, Code, FileCode, Server } from "lucide-react";
@@ -28,7 +28,6 @@ export default function SessionA1S3() {
             difficulty={session.difficulty}
           />
           <QuickActionsCard sessionId={session.id} />
-          <DeliverablesCard deliverables={session.deliverables} />
           
           {/* IDE Files Card */}
           <Card>
@@ -134,6 +133,9 @@ export default function SessionA1S3() {
           </ul>
         </CardContent>
       </Card>
+
+      {/* Deliverables */}
+      <DeliverablesCard deliverables={session.deliverables} />
 
       {/* Prerequisites */}
       <Card>

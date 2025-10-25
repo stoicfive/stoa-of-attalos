@@ -66,6 +66,7 @@ export default function SessionA1S1Activity() {
               testCommand={session?.testCommand}
               hintsPath={session?.hintsPath}
               rubricPath={session?.rubricPath}
+              starterFile="lessons/01-typescript-basics/trade.ts"
             />
             <SessionHelpCard />
             <SessionTipsCard tips={tips} />

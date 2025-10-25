@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SessionCard } from "@/components/lessons/session-card";
 import { 
   Clock, 
-  Target,
   ArrowLeft,
   Lock
 } from "lucide-react";
@@ -98,206 +97,86 @@ export default function Lessons() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* A1S1 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">45 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S1</CardTitle>
-                <CardDescription>Environment Setup</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Install and configure Python, Poetry, PostgreSQL, Docker, and VS Code.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>5 objectives</span>
-                </div>
-                <Link href="/lessons/a1s1">
-                  <Button className="w-full" size="sm">
-                    Start Session
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S1"
+              subtitle="Environment Setup"
+              description="Install and configure Python, Poetry, PostgreSQL, Docker, and VS Code."
+              duration="45 min"
+              objectives={5}
+              status="not-started"
+              isLocked={false}
+              href="/lessons/a1s1"
+            />
 
-            {/* A1S2 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">60 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S2</CardTitle>
-                <CardDescription>Database Models</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Learn SQLAlchemy ORM, create models, and set up database migrations.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>4 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S2"
+              subtitle="Database Models"
+              description="Learn SQLAlchemy ORM, create models, and set up database migrations."
+              duration="60 min"
+              objectives={4}
+              status="not-started"
+              isLocked={true}
+            />
 
-            {/* A1S3 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">50 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S3</CardTitle>
-                <CardDescription>FastAPI Endpoints</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Create REST API endpoints with request validation and responses.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>4 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S3"
+              subtitle="FastAPI Endpoints"
+              description="Create REST API endpoints with request validation and responses."
+              duration="50 min"
+              objectives={4}
+              status="not-started"
+              isLocked={true}
+            />
 
-            {/* A1S4 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">45 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S4</CardTitle>
-                <CardDescription>Testing & Validation</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Write comprehensive tests and achieve high code coverage.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>4 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S4"
+              subtitle="Testing & Validation"
+              description="Write comprehensive tests and achieve high code coverage."
+              duration="45 min"
+              objectives={4}
+              status="not-started"
+              isLocked={true}
+            />
 
-            {/* A1S5 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">60 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S5</CardTitle>
-                <CardDescription>Authentication</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Implement JWT authentication and secure your API endpoints.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>5 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S5"
+              subtitle="Authentication"
+              description="Implement JWT authentication and secure your API endpoints."
+              duration="60 min"
+              objectives={5}
+              status="not-started"
+              isLocked={true}
+            />
 
-            {/* A1S6 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">55 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S6</CardTitle>
-                <CardDescription>CRUD Operations</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Complete Create, Read, Update, Delete operations for all models.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>4 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S6"
+              subtitle="CRUD Operations"
+              description="Complete Create, Read, Update, Delete operations for all models."
+              duration="55 min"
+              objectives={4}
+              status="not-started"
+              isLocked={true}
+            />
 
-            {/* A1S7 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">50 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S7</CardTitle>
-                <CardDescription>Error Handling</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Implement proper error handling, logging, and validation.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>4 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S7"
+              subtitle="Error Handling"
+              description="Implement proper error handling, logging, and validation."
+              duration="50 min"
+              objectives={4}
+              status="not-started"
+              isLocked={true}
+            />
 
-            {/* A1S8 */}
-            <Card className="hover:border-primary transition-colors">
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <Badge variant="info">Not Started</Badge>
-                  <span className="text-sm text-muted-foreground">55 min</span>
-                </div>
-                <CardTitle className="text-lg">A1S8</CardTitle>
-                <CardDescription>API Documentation</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Generate interactive API docs and prepare for deployment.
-                </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-                  <Target className="h-3 w-3" />
-                  <span>4 objectives</span>
-                </div>
-                <Button className="w-full" size="sm" disabled>
-                  <Lock className="mr-2 h-3 w-3" />
-                  Locked
-                </Button>
-              </CardContent>
-            </Card>
+            <SessionCard
+              title="A1S8"
+              subtitle="API Documentation"
+              description="Generate interactive API docs and prepare for deployment."
+              duration="55 min"
+              objectives={4}
+              status="not-started"
+              isLocked={true}
+            />
           </div>
         </div>
       </section>

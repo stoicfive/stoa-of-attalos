@@ -15,10 +15,10 @@ The implementation lives in:
 | Area | Location | Purpose |
 | --- | --- | --- |
 | Hook | `apps/student-portal/hooks/use-vscode-workspace.ts` | Core logic for reading/storing the workspace path, generating links, and fallbacks |
-| UI | `apps/student-portal/components/session/ide-actions-card.tsx` | Main card that exposes quick actions in the sidebar |
+| UI | `apps/student-portal/components/session/ide-actions-card.tsx` | Main card that exposes quick actions in the sidebar, includes starter file button |
 | Modal | `apps/student-portal/components/session/workspace-path-modal.tsx` | Collects/validates the local path from the student |
 | Task Links | `apps/student-portal/components/session/vscode-file-link.tsx` | Reusable button for task/file lists |
-| Example usage | `apps/student-portal/app/lessons/a1s1/activity/page.tsx` | Shows how task lists push links to students |
+| Example usage | `apps/student-portal/app/lessons/a1s1/activity/page.tsx` | Shows how task lists push links to students and starter file integration |
 
 All components are client components because they depend on `localStorage`, `window.open`, and Clipboard APIs.
 
@@ -28,13 +28,14 @@ All components are client components because they depend on `localStorage`, `win
 
 - Reads the environment variable `NEXT_PUBLIC_VSCODE_WORKSPACE_PATH` (optional).
 - Reads/writes a persisted user path in `localStorage` under the key `stoa-vscode-workspace-path`.
-- Exposes helpers (`openProject`, `openPath`, `openWeb`, `copyCommand`, `setWorkspacePath`, `clearWorkspacePath`) that UI components consume.
-- Generates web fallbacks when no local path is available. The hook infers the GitHub repository path from `APP_CONFIG.repository` and uses `NEXT_PUBLIC_DEFAULT_BRANCH` (defaults to `main`) to build file URLs. For VS Code Web it uses query-style URLs (`https://vscode.dev/github/org/repo?path=...&version=...`) so that files that don’t exist yet still open inside the correct folder ready to be created.
+- Exposes helpers (`openProject`, `openPath`, `openWeb`, `openWebFile`, `copyCommand`, `setWorkspacePath`, `clearWorkspacePath`) that UI components consume.
+- Generates web fallbacks when no local path is available. The hook infers the GitHub repository path from `APP_CONFIG.repository` and uses `NEXT_PUBLIC_DEFAULT_BRANCH` (defaults to `main`) to build file URLs. For VS Code Web it uses direct file URLs (`https://vscode.dev/github/org/repo/blob/branch/path/to/file`) to open files directly in the editor.
 
 ```ts
 const {
   openPath,
   openProject,
+  openWebFile,
   copyCommand,
   workspacePath,
   hasWorkspacePath,
@@ -48,12 +49,48 @@ const {
 `IDEActionsCard` uses the hook to surface:
 
 - Open project button (local VS Code or VS Code web fallback)
+- **Starter file button** - Opens the lesson's main starter file directly in VS Code Web
 - Direct link buttons for top 3 lesson files (`session.ideFiles`)
 - Links for hints and rubric files
 - Buttons to launch VS Code for Web, configure path, copy `code ...` or `git clone ...` commands
 - Tooltip context that informs students about the current mode
 
 The modal is opened from the card and writes back via `setWorkspacePath`. Clearing the value resets to using environment fallback or VS Code web.
+
+### Starter File Feature
+
+Pass a `starterFile` prop to `IDEActionsCard` to enable quick access to the main file students should work on:
+
+```tsx
+<IDEActionsCard
+  ideFiles={session?.ideFiles}
+  testCommand={session?.testCommand}
+  hintsPath={session?.hintsPath}
+  rubricPath={session?.rubricPath}
+  starterFile="lessons/01-typescript-basics/trade.ts"
+/>
+```
+
+When provided, the "VS Code for Web" button changes to "Open Starter File in VS Code Web" and opens directly to that file in the GitHub repository. This eliminates the need for students to search for the correct file to begin working.
+
+**URL Format:**
+
+The `openWebFile` function generates URLs in this format:
+```
+https://vscode.dev/github/{org}/{repo}/blob/{branch}/{filepath}
+```
+
+Example for A1S1:
+```
+https://vscode.dev/github/stoicfive/stoa-of-attalos/blob/main/lessons/01-typescript-basics/trade.ts
+```
+
+This opens the file directly in VS Code Web's editor, ready for students to start coding.
+
+**Current Implementations:**
+- **A1S1**: `lessons/01-typescript-basics/trade.ts` - TypeScript trade interface
+- **A1S2**: `lessons/02-database-models/trade_model.py` - SQLAlchemy model  
+- **A1S3**: `lessons/03-api-endpoints/trades_router.py` - FastAPI router with TODO markers
 
 ## Task Lists
 

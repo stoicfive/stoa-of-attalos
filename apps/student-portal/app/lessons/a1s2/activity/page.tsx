@@ -66,6 +66,7 @@ export default function SessionA1S2Activity() {
               testCommand={session?.testCommand}
               hintsPath={session?.hintsPath}
               rubricPath={session?.rubricPath}
+              starterFile="lessons/02-database-models/trade_model.py"
             />
             <SessionHelpCard />
             <SessionTipsCard tips={tips} />

@@ -65,4 +65,25 @@ Record of terminal commands executed while working on this project. Commands are
 ## File Status & Utilities
 - `ls COMMANDS.md` — Confirm command log presence before creation.
 
+## Database & MCP Server
+- **PostgreSQL MCP Server** — Installed PostgreSQL Model Context Protocol server in Windsurf
+  - **Connection URL**: `postgresql://postgres:postgres@localhost:5432/trading_journal`
+  - **Purpose**: Provides AI-assisted read-only access to PostgreSQL database
+  - **Features**: 
+    - Execute read-only SQL queries via AI
+    - Inspect database schemas and table structures
+    - Query database metadata automatically
+  - **Configuration**: Added to Windsurf MCP server list
+  - **Usage**: Available through Windsurf AI assistant for database queries
+
+## Lesson Starter Files
+- **A1S3 FastAPI Endpoints** — Created starter code and test files for lesson 03
+  - `lessons/03-api-endpoints/trades_router.py` — FastAPI router with TODO markers for all CRUD endpoints
+  - `lessons/03-api-endpoints/trade_schema.py` — Pydantic schemas for request/response validation
+  - `lessons/03-api-endpoints/tests/test_trades_api.py` — Test file with TODO markers for 14 test functions
+  - `lessons/03-api-endpoints/tests/conftest.py` — Pytest fixtures and test configuration
+  - Files include comprehensive docstrings and examples
+  - Students uncomment and implement the TODO sections
+  - Test files follow TDD approach: tests exist first, students fill in implementations
+
 Commands will continue to be appended to this file as new tooling or scripts are executed.

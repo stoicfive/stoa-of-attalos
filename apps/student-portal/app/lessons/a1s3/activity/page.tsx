@@ -66,6 +66,7 @@ export default function SessionA1S3Activity() {
               testCommand={session?.testCommand}
               hintsPath={session?.hintsPath}
               rubricPath={session?.rubricPath}
+              starterFile="lessons/03-api-endpoints/trades_router.py"
             />
             <SessionHelpCard />
             <SessionTipsCard tips={tips} />

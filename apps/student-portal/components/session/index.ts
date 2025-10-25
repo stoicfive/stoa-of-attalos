@@ -5,3 +5,5 @@ export { SessionProgressCard } from './session-progress-card';
 export { SessionHelpCard } from './session-help-card';
 export { SessionTipsCard } from './session-tips-card';
 export { IDEActionsCard } from './ide-actions-card';
+export { VSCodeFileLink } from './vscode-file-link';
+export { WorkspacePathModal } from './workspace-path-modal';

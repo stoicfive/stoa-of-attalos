@@ -1,4 +1,4 @@
-# 🎉 High-Leverage Upgrades Complete!
+# 🎉 High-Leverage Upgrades Complete
 
 **Version**: 2.0.0
 **Date**: 2025-10-09
@@ -9,6 +9,7 @@
 ## 📦 What Was Added
 
 ### Infrastructure & DX (Developer Experience)
+
 1. ✅ **Enhanced Dev Container** - Locked versions, pre-installed tools
 2. ✅ **Docker Compose + Adminer** - Visual database UI on port 8080
 3. ✅ **Pre-commit Hooks** - 8 automated checks before commit
@@ -16,17 +17,20 @@
 5. ✅ **Enhanced CI** - Caching, concurrency control, artifacts
 
 ### Course Engine
+
 6. ✅ **Teacher Pack Index** - `teacher/index.json` with full course structure
 7. ✅ **Test Fixtures** - 27 deterministic CSV scenarios
 8. ✅ **Glossary** - 80+ terms with metaphors
 9. ✅ **Learning Debt Tracker** - Automated gap analysis
 
 ### Security & Hygiene
+
 10. ✅ **.env Discipline** - 40+ documented variables
 11. ✅ **Issue Templates** - Lesson request, bug report, refactor debt
 12. ✅ **PR Size Guard** - Auto-warn on large PRs (>500 lines)
 
 ### Documentation
+
 13. ✅ **UPGRADES_APPLIED.md** - Complete implementation guide
 14. ✅ **QUICK_START_V2.md** - 10-minute onboarding
 15. ✅ **Helper Scripts** - Learning debt tracking, database seeding
@@ -36,6 +40,7 @@
 ## 🚀 Quick Start
 
 ### New Users
+
 ```bash
 # 1. Open in Dev Container (VS Code prompt)
 # 2. Install hooks
@@ -52,6 +57,7 @@ npm run db:adminer
 ```
 
 ### New npm Scripts
+
 ```bash
 npm run track:debt      # Track learning patterns
 npm run db:seed         # Reseed database
@@ -61,6 +67,7 @@ npm run hooks:run       # Test hooks manually
 ```
 
 ### VS Code Tasks (Cmd+Shift+P → "Tasks: Run Task")
+
 - Run All Checks
 - Seed Database
 - Start Web App
@@ -90,6 +97,7 @@ npm run hooks:run       # Test hooks manually
 **VS Code Tasks**: 0 → 11 tasks
 
 ### New Capabilities
+
 - ✅ Visual database management (Adminer)
 - ✅ Automated learning debt tracking
 - ✅ Pre-commit quality gates
@@ -104,11 +112,13 @@ npm run hooks:run       # Test hooks manually
 ## 📁 Files Created (15)
 
 ### Configuration
+
 - `.pre-commit-config.yaml` - Pre-commit hooks
 - `.vscode/tasks.json` - VS Code tasks
 - `.env.example` - Environment template
 
 ### Documentation
+
 - `docs/GLOSSARY.md` - 80+ terms
 - `docs/LEARNING_DEBT.md` - Gap tracking
 - `docs/UPGRADES_APPLIED.md` - Implementation guide
@@ -116,11 +126,13 @@ npm run hooks:run       # Test hooks manually
 - `UPGRADE_SUMMARY.md` - This file
 
 ### Course Materials
+
 - `teacher/index.json` - Course structure
 - `tests/fixtures/trades/sample-trades.csv` - 15 scenarios
 - `tests/fixtures/trades/edge-cases.csv` - 12 edge cases
 
 ### Automation
+
 - `scripts/track-learning-debt.sh` - Auto-track gaps
 - `.github/workflows/pr-size-guard.yml` - PR monitoring
 - `.github/ISSUE_TEMPLATE/lesson-request.md` - New lesson template
@@ -143,6 +155,7 @@ npm run hooks:run       # Test hooks manually
 ## 🎯 Next Steps (Not Yet Implemented)
 
 ### High Priority
+
 1. **Matrix CI** - Separate web/api test jobs
 2. **Branch Protection** - Require checks on main
 3. **CODEOWNERS** - Auto-assign reviewers
@@ -150,6 +163,7 @@ npm run hooks:run       # Test hooks manually
 5. **Gates as Code** - Quiz system in teacher/gates/
 
 ### Medium Priority
+
 6. **Hint Throttle** - Progressive hint unlocking
 7. **Golden Tests** - Snapshot testing for analytics
 8. **Property Tests** - Fuzz testing with fast-check
@@ -157,6 +171,7 @@ npm run hooks:run       # Test hooks manually
 10. **Weekly Retro** - Auto-generate progress summaries
 
 ### Low Priority
+
 11. **Runbook** - Debug checklists
 12. **Metrics Dashboard** - Chart time-to-green, pass rates
 13. **Quiz Tracking** - Store and analyze quiz scores
@@ -192,16 +207,19 @@ open teacher/index.json   # Course structure
 ## 📖 Key Documentation
 
 ### For Students
+
 - **[QUICK_START_V2.md](docs/QUICK_START_V2.md)** - 10-minute onboarding
 - **[GLOSSARY.md](docs/GLOSSARY.md)** - Learn terminology
 - **[teacher/index.json](teacher/index.json)** - Track progress
 
 ### For Teachers
+
 - **[UPGRADES_APPLIED.md](docs/UPGRADES_APPLIED.md)** - Full implementation details
 - **[LEARNING_DEBT.md](docs/LEARNING_DEBT.md)** - Student struggle patterns
 - **[teacher/index.json](teacher/index.json)** - Course planning
 
 ### For Contributors
+
 - **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** - Contribution guide
 - **[.pre-commit-config.yaml](.pre-commit-config.yaml)** - Hook configuration
 - **[.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/)** - Issue templates
@@ -211,28 +229,36 @@ open teacher/index.json   # Course structure
 ## 🎓 Learning Enhancements
 
 ### Glossary (80+ Terms)
+
 Every technical term explained with metaphors:
+
 - "Validation = Bouncer at a club"
 - "ORM = Translator between languages"
 - "JWT = Digital passport"
 - "Mock = Stunt double"
 
 ### Teacher Pack Index
+
 Complete course structure in JSON:
+
 - 3 phases (Foundation, Integration, Advanced)
 - 8 sessions (1 complete, 7 planned)
 - Objectives, prerequisites, deliverables per session
 - Progress tracking built-in
 
 ### Learning Debt Tracking
+
 Identify and fix knowledge gaps:
+
 - Auto-track test failure patterns
 - Categorize by concept
 - Action plan template
 - Metrics by session
 
 ### Test Fixtures
+
 Deterministic, realistic data:
+
 - 15 sample trades (realistic scenarios)
 - 12 edge cases (boundary conditions)
 - CSV format (easy to read/edit)
@@ -243,6 +269,7 @@ Deterministic, realistic data:
 ## 🔒 Security Enhancements
 
 ### Pre-commit Secrets Detection
+
 - AWS credentials
 - API keys
 - Passwords
@@ -250,11 +277,13 @@ Deterministic, realistic data:
 - Custom patterns
 
 ### git-secrets Integration
+
 - 6 secret patterns configured
 - Runs on every commit
 - Prevents accidental leaks
 
 ### Environment Discipline
+
 - 40+ variables documented
 - Comments explain usage
 - Security best practices
@@ -265,24 +294,28 @@ Deterministic, realistic data:
 ## 🏆 Success Metrics
 
 ### Infrastructure
+
 - ✅ Dev Container builds < 3 min
 - ✅ Pre-commit hooks < 10 sec
 - ✅ CI completes < 7 min
 - ✅ Zero version conflicts
 
 ### Code Quality
+
 - ✅ 8 pre-commit checks
 - ✅ PR size monitoring
 - ✅ Auto-formatting enforced
 - ✅ Secret detection active
 
 ### Learning
+
 - ✅ 80+ terms documented
 - ✅ Course structure tracked
 - ✅ Learning debt monitored
 - ✅ 27 test fixtures available
 
 ### Developer Experience
+
 - ✅ 11 VS Code tasks
 - ✅ 5 new npm scripts
 - ✅ Visual database UI
@@ -293,6 +326,7 @@ Deterministic, realistic data:
 ## 💬 Feedback
 
 ### What Students Are Saying
+
 > "The glossary with metaphors is a game-changer!"
 
 > "Adminer makes database debugging so much easier"
@@ -300,6 +334,7 @@ Deterministic, realistic data:
 > "Pre-commit hooks catch my mistakes before CI"
 
 ### What Teachers Are Saying
+
 > "Learning debt tracking helps me improve lessons"
 
 > "Teacher pack index makes planning sessions easier"
@@ -322,12 +357,14 @@ Deterministic, realistic data:
 ## 🔗 Quick Links
 
 ### Local Services
-- Web: http://localhost:3000
-- API: http://localhost:8000
-- API Docs: http://localhost:8000/docs
-- **Adminer**: http://localhost:8080 ⭐ NEW
+
+- Web: <http://localhost:3000>
+- API: <http://localhost:8000>
+- API Docs: <http://localhost:8000/docs>
+- **Adminer**: <http://localhost:8080> ⭐ NEW
 
 ### Documentation
+
 - [Quick Start v2](docs/QUICK_START_V2.md) ⭐ NEW
 - [Glossary](docs/GLOSSARY.md) ⭐ NEW
 - [Upgrades Applied](docs/UPGRADES_APPLIED.md) ⭐ NEW
@@ -335,6 +372,7 @@ Deterministic, realistic data:
 - [Teacher Index](teacher/index.json) ⭐ NEW
 
 ### Tools
+
 - [Pre-commit Config](.pre-commit-config.yaml) ⭐ NEW
 - [VS Code Tasks](.vscode/tasks.json) ⭐ NEW
 - [Test Fixtures](tests/fixtures/trades/) ⭐ NEW

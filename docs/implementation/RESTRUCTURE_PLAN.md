@@ -37,6 +37,7 @@ stoa-of-attalos/
 ```
 
 **Problems:**
+
 - ❌ "packages" and "apps" are unclear
 - ❌ Deep nesting (4-5 levels)
 - ❌ No clear entry point
@@ -83,6 +84,7 @@ stoa-of-attalos/
 ```
 
 **Benefits:**
+
 - ✅ Clear entry point: `lessons/`
 - ✅ Numbered lessons: `01-`, `02-`, `03-`
 - ✅ Descriptive names: `typescript-basics`, `database-models`, `api-endpoints`
@@ -97,6 +99,7 @@ stoa-of-attalos/
 ### Phase 1: Create New Structure
 
 1. **Create new directories:**
+
    ```bash
    mkdir -p lessons/01-typescript-basics/tests
    mkdir -p lessons/02-database-models/tests
@@ -104,36 +107,39 @@ stoa-of-attalos/
    ```
 
 2. **Move A1S1 files:**
+
    ```bash
    # Move from packages/types/src/
    mv packages/types/src/trade.ts lessons/01-typescript-basics/
    mv packages/types/src/validators.ts lessons/01-typescript-basics/
-   
+
    # Move from packages/types/src/__tests__/
    mv packages/types/src/__tests__/validators.test.ts lessons/01-typescript-basics/tests/
-   
+
    # Move from apps/web/src/components/
    mv apps/web/src/components/TradeForm.tsx lessons/01-typescript-basics/
    mv apps/web/src/components/__tests__/TradeForm.test.tsx lessons/01-typescript-basics/tests/
    ```
 
 3. **Move A1S2 files:**
+
    ```bash
    # Move from apps/api/
    mv apps/api/models/trade.py lessons/02-database-models/trade_model.py
    mv apps/api/database.py lessons/02-database-models/
-   
+
    # Move from apps/api/tests/
    mv apps/api/tests/conftest.py lessons/02-database-models/tests/
    mv apps/api/tests/test_trade_model.py lessons/02-database-models/tests/
    ```
 
 4. **Move A1S3 files:**
+
    ```bash
    # Move from apps/api/
    mv apps/api/routers/trades.py lessons/03-api-endpoints/trades_router.py
    mv apps/api/schemas/trade.py lessons/03-api-endpoints/trade_schema.py
-   
+
    # Move from apps/api/tests/
    mv apps/api/tests/test_trades_api.py lessons/03-api-endpoints/tests/
    ```
@@ -154,19 +160,16 @@ stoa-of-attalos/
 ### Phase 3: Update Configuration Files
 
 1. **Update `tsconfig.json`:**
+
    ```json
    {
      "include": ["lessons/**/*.ts", "lessons/**/*.tsx"],
-     "exclude": [
-       "node_modules",
-       "apps/student-portal",
-       "teacher",
-       "scripts"
-     ]
+     "exclude": ["node_modules", "apps/student-portal", "teacher", "scripts"]
    }
    ```
 
 2. **Update `eslint.config.js`:**
+
    ```javascript
    {
      files: ['lessons/**/*.ts', 'lessons/**/*.tsx'],
@@ -178,9 +181,9 @@ stoa-of-attalos/
    ```typescript
    export default defineConfig({
      test: {
-       include: ['lessons/**/tests/**/*.test.{ts,tsx}']
-     }
-   })
+       include: ['lessons/**/tests/**/*.test.{ts,tsx}'],
+     },
+   });
    ```
 
 ### Phase 4: Update Validation Scripts
@@ -200,12 +203,13 @@ stoa-of-attalos/
 ### Phase 5: Update Portal
 
 1. **Update `session-metadata.ts`:**
+
    ```typescript
    ideFiles: [
-     "lessons/01-typescript-basics/trade.ts",
-     "lessons/01-typescript-basics/validators.ts",
-     "lessons/01-typescript-basics/TradeForm.tsx"
-   ]
+     'lessons/01-typescript-basics/trade.ts',
+     'lessons/01-typescript-basics/validators.ts',
+     'lessons/01-typescript-basics/TradeForm.tsx',
+   ];
    ```
 
 2. **Update `session-tasks.ts`:**
@@ -219,6 +223,7 @@ stoa-of-attalos/
 ### Phase 6: Cleanup
 
 1. **Remove old directories:**
+
    ```bash
    rm -rf packages/types/src/
    rm -rf apps/web/src/components/TradeForm*
@@ -261,6 +266,7 @@ If something breaks:
 ## Benefits After Migration
 
 **For Students:**
+
 - ✅ Know exactly where to start: `lessons/`
 - ✅ See all their work in one place
 - ✅ Numbered lessons show progression
@@ -269,12 +275,14 @@ If something breaks:
 - ✅ No confusion about "packages" vs "apps"
 
 **For Teachers:**
+
 - ✅ Easy to see student progress
 - ✅ Clear which files belong to which lesson
 - ✅ Simple to explain directory structure
 - ✅ Less support questions about "where do I work?"
 
 **For Portal:**
+
 - ✅ Simpler file paths
 - ✅ Easier to implement "Open in IDE"
 - ✅ Clear lesson boundaries

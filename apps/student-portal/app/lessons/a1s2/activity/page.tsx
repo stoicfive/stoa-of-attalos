@@ -7,13 +7,14 @@ import {
   SessionProgressCard,
   SessionHelpCard,
   SessionTipsCard,
-  IDEActionsCard
+  IDEActionsCard,
+  VSCodeFileLink
 } from '@/components/session';
 import { useSessionState } from '@/hooks/use-session-state';
 import { getSessionTasks } from '@/lib/session-tasks';
 import { getSessionMetadata } from '@/lib/session-metadata';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertCircle, Code, Database } from 'lucide-react';
+import { AlertCircle, Database } from 'lucide-react';
 
 export default function SessionA1S2Activity() {
   const tasks = getSessionTasks('a1s2');
@@ -61,7 +62,6 @@ export default function SessionA1S2Activity() {
               estimatedMinutes={50}
             />
             <IDEActionsCard
-              sessionId="a1s2"
               ideFiles={session?.ideFiles}
               testCommand={session?.testCommand}
               hintsPath={session?.hintsPath}
@@ -130,12 +130,9 @@ export default function SessionA1S2Activity() {
               {task.files && task.files.length > 0 && (
                 <div>
                   <p className="text-sm font-medium mb-2">Files to Create:</p>
-                  <div className="space-y-1">
+                  <div className="grid gap-2 sm:grid-cols-2">
                     {task.files.map((file, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm">
-                        <Code className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                        <code className="text-xs bg-secondary px-2 py-1 rounded break-all">{file}</code>
-                      </div>
+                      <VSCodeFileLink key={i} path={file} />
                     ))}
                   </div>
                 </div>

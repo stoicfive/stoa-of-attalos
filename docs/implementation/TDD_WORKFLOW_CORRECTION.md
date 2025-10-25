@@ -14,34 +14,42 @@ The portal and teacher READMEs incorrectly stated students should "Write tests" 
 ## ✅ What Was Fixed
 
 ### **1. Portal Task Descriptions** ✅
+
 **File:** `apps/student-portal/lib/session-tasks.ts`
 
 **Changes:**
+
 - ✅ A1S1: "Write Unit Tests" → "Complete Unit Tests"
 - ✅ A1S1: "Add Component Tests" → "Complete Component Tests"
 - ✅ A1S2: "Write Model Tests" → "Complete Model Tests"
 - ✅ A1S3: "Write API Tests" → "Complete API Tests"
 
 **Added:**
+
 - Notes about TODO(student) markers
 - Instructions to find and replace `pass` statements
 - Example code showing TODO comments
 
 ### **2. Teacher README Files** ✅
-**Files:** 
+
+**Files:**
+
 - `teacher/a1s1/README.md`
 - `teacher/a1s2/README.md`
 
 **Changes:**
+
 - ✅ Updated step descriptions to say "Complete" instead of "Write"
 - ✅ Added notes: "Test file already exists with TODO(student) markers"
 - ✅ Added instructions: "Find test functions with `pass` statements"
 - ✅ Added instructions: "Replace `pass` with actual test implementations"
 
 ### **3. Memory System** ✅
+
 **Updated memory:** Trading Journal Learning System
 
 **Now documents:**
+
 - Tests already exist with TODO markers
 - Students fill in test implementations
 - Test structure guides what to test
@@ -109,7 +117,7 @@ def test_create_trade(db_session):
     # Hint: db_session.commit()
     # Hint: assert trade.id is not None
     # Hint: assert trade.symbol == "AAPL"
-    
+
     # Student implementation:
     trade = Trade(
         symbol="AAPL",
@@ -120,7 +128,7 @@ def test_create_trade(db_session):
     )
     db_session.add(trade)
     db_session.commit()
-    
+
     assert trade.id is not None
     assert trade.symbol == "AAPL"
     assert trade.entry_price == Decimal("150.00")
@@ -170,13 +178,16 @@ def test_create_trade(db_session):
 ## 📊 Files Changed
 
 ### **Portal:**
+
 - `apps/student-portal/lib/session-tasks.ts` - Task descriptions updated
 
 ### **Teacher:**
+
 - `teacher/a1s1/README.md` - Steps 3 and 5 updated
 - `teacher/a1s2/README.md` - Step 5 updated
 
 ### **Documentation:**
+
 - Memory system updated
 - This correction document created
 
@@ -185,12 +196,14 @@ def test_create_trade(db_session):
 ## 🎯 Impact
 
 ### **Before:**
+
 - ❌ Confusion about creating vs completing tests
 - ❌ Inconsistent messaging
 - ❌ Students might create duplicate test files
 - ❌ Unclear what to test
 
 ### **After:**
+
 - ✅ Clear: complete existing test stubs
 - ✅ Consistent across portal and teacher docs
 - ✅ Students know exactly what to do
@@ -201,6 +214,7 @@ def test_create_trade(db_session):
 ## 🚀 Next Steps
 
 Students can now:
+
 1. View session in portal
 2. Read teacher README
 3. Implement production code

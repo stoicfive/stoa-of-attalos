@@ -13,9 +13,12 @@ A complete development environment with automated quality checks, progressive le
 > ⏱️ **Duration:** ~1 minute  
 > 📚 **Topics:** Course structure, tech stack, learning approach  
 > 🔗 **Watch on YouTube:** [youtu.be/op6XMqsVWnk](https://youtu.be/op6XMqsVWnk)
+>
+> **Note:** Currently 3 sessions are complete (Phase A: Foundation). 5 more sessions planned for Phases B & C.
 
 ## ✨ Features
 
+- 🎨 **Student Portal** - Beautiful Next.js web interface for navigating lessons, tracking progress, and accessing resources
 - 🐳 **Dev Container** - Node.js 20, Python 3.12, PostgreSQL 16 (zero setup)
 - 🔄 **GitHub Actions CI** - 8 parallel checks on every commit
 - 📏 **Quality Enforcement** - 300-line files, 50-line functions, 70% coverage
@@ -28,7 +31,7 @@ A complete development environment with automated quality checks, progressive le
 ### Prerequisites
 
 - **Node.js** 20+ and npm 10+
-- **Python** 3.12+ 
+- **Python** 3.12+
 - **Docker Desktop** (for database)
 - **Git** for version control
 
@@ -47,17 +50,20 @@ See [`.devcontainer/README.md`](.devcontainer/README.md) for details.
 ### Option 2: Local Setup
 
 **1. Clone the repository**
+
 ```bash
 git clone https://github.com/stoicfive/stoa-of-attalos.git
 cd stoa-of-attalos
 ```
 
 **2. Install Node.js dependencies**
+
 ```bash
 npm install
 ```
 
 **3. Install Python dependencies**
+
 ```bash
 # Install Poetry (if not already installed)
 pip3 install poetry
@@ -67,6 +73,7 @@ poetry install
 ```
 
 **4. Set up the database**
+
 ```bash
 # Start PostgreSQL with Docker Compose
 docker-compose -f .devcontainer/docker-compose.yml up -d
@@ -76,6 +83,7 @@ docker-compose -f .devcontainer/docker-compose.yml ps
 ```
 
 **5. Configure environment variables**
+
 ```bash
 # Copy example environment file
 cp .env.example .env
@@ -84,6 +92,7 @@ cp .env.example .env
 ```
 
 **6. Verify setup**
+
 ```bash
 # Run all checks
 npm run check:all
@@ -92,18 +101,37 @@ npm run check:all
 npm run test:watch
 ```
 
-**7. Start learning!**
-```bash
-# Open first session
-open teacher/a1s1/README.md
+**7. Start the Student Portal (Optional)**
 
-# Or view in terminal
-cat teacher/a1s1/README.md
+```bash
+# Start the web interface
+cd apps/student-portal
+npm install
+npm run dev
+
+# Open in browser: http://localhost:3000
+```
+
+**8. Start learning!**
+
+```bash
+# Option A: Use the Student Portal
+open http://localhost:3000
+
+# Option B: Use the command line
+open lessons/START_HERE.md
+
+# Or start first lesson directly
+cd lessons/01-typescript-basics
+cat README.md
 ```
 
 ### Quick Commands
 
 ```bash
+# Student Portal
+cd apps/student-portal && npm run dev    # Start portal (http://localhost:3000)
+
 # Development
 npm run test:watch          # Watch tests (recommended during coding)
 npm run check:all           # Run all quality checks
@@ -123,14 +151,23 @@ docker-compose -f .devcontainer/docker-compose.yml ps       # Status
 
 ```
 .
-├── .devcontainer/       # Docker dev environment (Node + Python + PostgreSQL)
-├── .github/workflows/   # CI/CD pipeline (8 parallel jobs)
-├── apps/                # Next.js web app, FastAPI backend
-├── packages/            # Shared types, UI components, database
-├── teacher/             # Learning sessions with hints & rubrics
-│   └── a1s1/           # Sample: Trade entry form (50 min)
-├── tests/               # Unit, integration, E2E tests
-└── scripts/             # Validation and setup scripts
+├── lessons/             # 🎓 STUDENT WORKSPACE (start here!)
+│   ├── START_HERE.md   # Entry point guide
+│   ├── 01-typescript-basics/
+│   ├── 02-database-models/
+│   └── 03-api-endpoints/
+├── apps/
+│   ├── student-portal/ # Next.js learning portal
+│   ├── api/            # FastAPI backend (reference)
+│   └── web/            # (empty - future frontend)
+├── teacher/            # Teacher materials (hints, rubrics, solutions)
+│   ├── a1s1/          # Session A1S1 materials
+│   ├── a1s2/          # Session A1S2 materials
+│   └── index.json     # Course structure
+├── .devcontainer/     # Docker dev environment
+├── .github/workflows/ # CI/CD pipeline (8 parallel jobs)
+├── tests/             # Root-level test fixtures
+└── scripts/           # Validation and setup scripts
 ```
 
 ## 🛠️ Tech Stack
@@ -205,6 +242,26 @@ See [`.github/workflows/README.md`](.github/workflows/README.md) for details.
 
 ## 🎓 Learning System
 
+### Student Portal
+
+The **Student Portal** is a modern web interface built with Next.js that provides:
+
+- 📊 **Dashboard** - Track your progress across all sessions
+- 📚 **Lesson Browser** - Navigate sessions with clear objectives and prerequisites
+- ✅ **Task Checklists** - Interactive task cards with code examples
+- 🎯 **Progress Tracking** - See completion status and time estimates
+- 🔗 **IDE Integration** - Open files directly in VS Code
+- 💡 **Resources** - Access hints, rubrics, and documentation
+
+**Access the portal:**
+
+```bash
+cd apps/student-portal
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
 ### Session Structure (50 minutes)
 
 ```
@@ -236,7 +293,14 @@ Each session includes:
 **Try it:**
 
 ```bash
-open teacher/a1s1/README.md
+# Start here
+open lessons/START_HERE.md
+
+# Or go directly to first lesson
+cd lessons/01-typescript-basics
+cat README.md
+
+# After completing work, validate from root
 ./scripts/check-a1s1.sh
 ```
 
@@ -252,6 +316,7 @@ open teacher/a1s1/README.md
 ## 📚 Documentation
 
 **Start Here:**
+
 - **[WELCOME.md](docs/WELCOME.md)** - 🎓 Orientation & first steps
 - **[CURRICULUM.md](docs/CURRICULUM.md)** - 📚 Complete course overview
 - **[PHASE_A.md](docs/PHASE_A.md)** - Foundation (Sessions 1-3)
@@ -259,11 +324,13 @@ open teacher/a1s1/README.md
 - **[PHASE_C.md](docs/PHASE_C.md)** - Advanced (Sessions 6-8)
 
 **Reference:**
+
 - **[GLOSSARY.md](docs/GLOSSARY.md)** - 80+ terms with metaphors
 - **[QUICK_START_V2.md](docs/QUICK_START_V2.md)** - 10-minute setup guide
 - **[LEARNING_DEBT.md](docs/LEARNING_DEBT.md)** - Knowledge gap tracking
 
 **Technical:**
+
 - **[LEARNING_SYSTEM_OVERVIEW.md](docs/LEARNING_SYSTEM_OVERVIEW.md)** - System architecture
 - **[FULL_STACK_SETUP.md](docs/FULL_STACK_SETUP.md)** - Complete technical docs
 - **[UPGRADES_APPLIED.md](docs/UPGRADES_APPLIED.md)** - Latest enhancements

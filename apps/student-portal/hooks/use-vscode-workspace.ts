@@ -90,17 +90,17 @@ export function useVSCodeWorkspace(
         openWeb();
         return;
       }
+
       const base = `https://vscode.dev/github/${repoPath}`;
+
       if (!relativePath) {
         window.open(base, "_blank", "noopener,noreferrer");
         return;
       }
+
       const normalized = relativePath.replace(/^\/+/, "");
-      window.open(
-        `${base}/blob/${DEFAULT_BRANCH}/${encodeURI(normalized)}`,
-        "_blank",
-        "noopener,noreferrer"
-      );
+      const query = `?path=${encodeURIComponent(normalized)}&version=${encodeURIComponent(DEFAULT_BRANCH)}`;
+      window.open(`${base}${query}`, "_blank", "noopener,noreferrer");
     },
     [repoPath, openWeb]
   );

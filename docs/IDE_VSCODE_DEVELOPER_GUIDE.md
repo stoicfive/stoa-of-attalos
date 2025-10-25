@@ -29,7 +29,7 @@ All components are client components because they depend on `localStorage`, `win
 - Reads the environment variable `NEXT_PUBLIC_VSCODE_WORKSPACE_PATH` (optional).
 - Reads/writes a persisted user path in `localStorage` under the key `stoa-vscode-workspace-path`.
 - Exposes helpers (`openProject`, `openPath`, `openWeb`, `copyCommand`, `setWorkspacePath`, `clearWorkspacePath`) that UI components consume.
-- Generates web fallbacks when no local path is available. The hook infers the GitHub repository path from `APP_CONFIG.repository` and uses `NEXT_PUBLIC_DEFAULT_BRANCH` (defaults to `main`) to build file URLs.
+- Generates web fallbacks when no local path is available. The hook infers the GitHub repository path from `APP_CONFIG.repository` and uses `NEXT_PUBLIC_DEFAULT_BRANCH` (defaults to `main`) to build file URLs. For VS Code Web it uses query-style URLs (`https://vscode.dev/github/org/repo?path=...&version=...`) so that files that don’t exist yet still open inside the correct folder ready to be created.
 
 ```ts
 const {
